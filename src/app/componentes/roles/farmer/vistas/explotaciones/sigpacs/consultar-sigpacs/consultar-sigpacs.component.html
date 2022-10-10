@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Lista de SIGPACs</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lista de SIGPACs </li>
+    </ol>
+</nav>
+<hr>
+
+<table class="table table-hover table-propio shadow border p-2">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Municio</th>
+            <th scope="col">Zona</th>
+            <th scope="col">Polígono</th>
+            <th scope="col">Área <i class="bi bi-info-circle" data-bs-toggle="tooltip" title="En metros cuadrados.">
+                </i></th>
+            <th scope="col">Uso SIGPAC</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sigpac of SIGPACS; index as i">
+            <th scope="row">{{sigpac.id}}</th>
+            <td>{{sigpac.province}}</td>
+            <td>{{sigpac.municipality}}</td>
+            <td>{{sigpac.zone}}</td>
+            <td>{{sigpac.polygon}}</td>
+            <td>{{sigpac.enclosure}}</td>
+            <td>{{sigpac.SIGPAC_use}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="d-flex justify-content-center m-5 ">
+    <a routerLink="añadir-sigpac" type="button" style="--clr:#1e9bff" class="boton"> <span>Añadir SIGPAC </span>
+        <i></i></a>
+</div>

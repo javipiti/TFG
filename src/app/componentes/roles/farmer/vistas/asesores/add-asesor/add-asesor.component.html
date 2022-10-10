@@ -1,0 +1,167 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir asesor</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir asesor </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">ID de la explotación: </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="number" id="farmID" class="form-control" [(ngModel)]="farmID">
+                    </div>
+                    <div *ngIf="error_farmID" class="m-3">
+                        <p class="validacion">
+                            {{error_farmID}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="asesorForm">
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="name" class="col-form-label fw-bold">Nombre</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="name" class="form-control" formControlName="name">
+                        </div>
+                        <div *ngIf="(name?.invalid && name?.touched) || (name?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="name?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="surname" class="col-form-label fw-bold">Apellidos</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="surname" class="form-control" formControlName="surname">
+                        </div>
+                        <div *ngIf="(surname?.invalid && surname?.touched) || (surname?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="surname?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="admission_date" class="col-form-label fw-bold">Fecha de admisión</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="admission_date" class="form-control"
+                                formControlName="admission_date">
+                        </div>
+                        <div *ngIf="(admission_date?.invalid && admission_date?.touched) || (admission_date?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="admission_date?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="discharge_date" class="col-form-label fw-bold">Fecha de cesión</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="discharge_date" class="form-control"
+                                formControlName="discharge_date">
+                        </div>
+                        <div *ngIf="(discharge_date?.invalid && discharge_date?.touched) || (discharge_date?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="discharge_date?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="creation_date" class="col-form-label fw-bold">Fecha de creación</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="creation_date" class="form-control" formControlName="creation_date">
+                        </div>
+                    </div>
+                    <div *ngIf="(creation_date?.invalid && creation_date?.touched) || (creation_date?.invalid && invalido)" class="m-3">
+                        <p class="validacion" *ngIf="creation_date?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="license_type" class="col-form-label fw-bold">Licencia</label>
+                        </div>
+                        <div class="col-auto">
+                            <select id="license_type" class="form-select" formControlName="license_type">
+                                <option value="" selected>Seleccionar</option>
+                                <option value="basic"> Básica</option>
+                                <option value="qualified">Calificado </option>
+                                <option value="blocked">Bloqueada</option>
+                                <option value="fumigator">Fumigador</option>
+                                <option value="adviser">Asesor</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(license_type?.invalid && license_type?.touched) || (license_type?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="license_type?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addAsesor(asesorForm.value)"> <span>
+                        Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<p *ngIf="mensaje" class="text-info text-center"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales">
+        Añadir más.</a></p>

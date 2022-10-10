@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir visita</h3>
+</div>
+
+<hr> 
+
+<div class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">ID del asesor: </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="number" id="farmID" class="form-control" [(ngModel)]="asesorID">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="visitaForm">
+            
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="date" class="col-form-label fw-bold">Fecha: </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="date" class="form-control" formControlName="date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addVisita(visitaForm.value)"> <span>Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>

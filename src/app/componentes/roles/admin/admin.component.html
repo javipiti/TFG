@@ -1,0 +1,185 @@
+<app-admin-header></app-admin-header>
+
+<div class="d-flex justify-content-center align-items-start bg-image mask mask-custom"
+        style="background-image: url('assets/administrador.PNG'); height: 300px;background-size: cover; background-repeat: no-repeat;">
+    </div>
+
+<div *ngIf="user.role?.role_type == 'admin'">
+    <div class="container-fluid mb-5 mt-5">
+        <div class="row">
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de servicios</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/servicio/usuarios" class="list-group-item list-group-item-action">Módulo de usuario
+                    </a>
+                    <a href="admin/servicio/explotaciones" class="list-group-item list-group-item-action">Módulo de
+                        explotación</a>
+                    <a href="admin/servicio/notificaciones" class="list-group-item list-group-item-action">Módulo de
+                        notificación</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de usuarios</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/listaUsuarios" class="list-group-item list-group-item-action">Consultar usuarios y
+                        archivos de verificación.</a>
+                    <a href="admin/listaArchivos" class="list-group-item list-group-item-action">Consultar todos los
+                        archivos.</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de análisis</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/analisis" class="list-group-item list-group-item-action">Consultar análisis</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de asesores</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/asesores" class="list-group-item list-group-item-action">Consultar asesores</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de cosechas</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/cosechas" class="list-group-item list-group-item-action">Consultar cosechas</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de explotaciones</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/explotaciones" class="list-group-item list-group-item-action">Consultar
+                        explotaciones</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de equipos de aplicación</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/equipos-aplicacion" class="list-group-item list-group-item-action">Consultar
+                        equipos de aplicación</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de control integrado de plagas</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/control-plagas" class="list-group-item list-group-item-action">Consultar controles
+                        integrados de plagas</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4 text-center"> Gestión de acciones fitosanitarias</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/acciones-fitosanitarias" class="list-group-item list-group-item-action">Consultar
+                        acciones fitosanitarias</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="user.role?.role_type == 'inspector'">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de usuarios</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/listaUsuarios" class="list-group-item list-group-item-action">Consultar usuarios y
+                        archivos de verificación.</a>
+                    <a href="admin/listaArchivos" class="list-group-item list-group-item-action">Consultar todos los
+                        archivos.</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de análisis</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/analisis" class="list-group-item list-group-item-action">Consultar análisis</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de asesores</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/asesores" class="list-group-item list-group-item-action">Consultar asesores</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de cosechas</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/cosechas" class="list-group-item list-group-item-action">Consultar cosechas</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de explotaciones</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/explotaciones" class="list-group-item list-group-item-action">Consultar
+                        explotaciones</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de equipos de aplicación</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/equipos-aplicacion" class="list-group-item list-group-item-action">Consultar
+                        equipos de aplicación</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de control integrado de plagas</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/control-plagas" class="list-group-item list-group-item-action">Consultar controles
+                        integrados de plagas</a>
+                </div>
+            </div>
+
+            <div class="col shadow m-2 rounded">
+                <h3 class="m-4"> Gestión de acciones fitosanitarias</h3>
+                <hr>
+                <div class="list-group m-3 lista">
+                    <a href="admin/acciones-fitosanitarias" class="list-group-item list-group-item-action">Consultar
+                        acciones fitosanitarias</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

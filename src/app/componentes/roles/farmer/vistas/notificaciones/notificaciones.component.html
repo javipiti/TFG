@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-start align-items-center bg-image"
+    style="background-image: url('assets/notificacion.PNG'); height: 320px;background-size: cover; background-repeat: no-repeat;">
+    <h2 class="ms-5 ps-5">Notificaciones </h2>
+</div>
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href=""><i class="bi bi-house-fill"></i></a></li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="hay">
+    <table class="table table-propio table-hover mt-5 shadow border">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of notificaciones; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{n.description}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center m-5">
+        <a type="button" style="--clr:#3A3A3A" class="boton" (click)="limpiarNotificaciones()"> <span>Limpiar
+                notificaciones</span> <i></i></a>
+    </div>
+</div>
+
+<p *ngIf="!hay" class="text-center text-info shadow rounded p-4"> No hay notificaciones. </p>
+
+
+<div *ngIf="user.role?.role_type == 'farm_representative'">
+    <hr>
+    <h2 class="text-center">Solicitudes de representación </h2>
+    <hr>
+
+    <div *ngIf="haySolicitudes;else noHaySolicitudes">
+
+
+        <table class="table table-propio2 table-hover shadow rounded p-2">
+            <thead>
+                <tr>
+                    <th scope="col">ID </th>
+                    <th scope="col">ID de la explotación</th>
+                    <th scope="col">Fecha petición</th>
+                    <th scope="col">Acción</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of solicitudes; index as i">
+                    <th scope="row"> {{s.farmRepresentative}} </th>
+                    <td>{{s.farmId}}</td>
+                    <td>{{s.requestDate}}</td>
+                    <td class="celda">
+                        <div *ngIf="s.status=='WAITING'" class="d-flex flex-row">
+                            <div class="col">
+                                <a style="--i:#66ff7a;--j:#00ff15;" class="iconos"
+                                    (click)="aceptarPeticionRepresentacion(s.id)">
+                                    <span class="icon"><i class="bi bi-hand-thumbs-up aceptar"></i></span>
+                                    <span class="title">Aceptar</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a style="--i:#FF9966;--j:#FF5E62;" class="iconos"
+                                    (click)="rechazarPeticionRepresentacion(s.id)">
+                                    <span class="icon"><i class="bi bi-hand-thumbs-down rechazar"></i></span>
+                                    <span class="title">Rechazar</span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ng-template #noHaySolicitudes>
+        <p class="text-info text-center shadow p-4 rounded mt-3"> No hay solicitudes pendientes. </p>
+    </ng-template>
+</div>

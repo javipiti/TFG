@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir equipo</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir equipo </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">ID de la explotación: </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="number" id="farmID" class="form-control" [(ngModel)]="farmID">
+                    </div>
+                    <div *ngIf="error_farmID" class="m-3">
+                        <p class="validacion">
+                            {{error_farmID}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="equipoForm">
+            
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="equipment_number" class="col-form-label fw-bold">Nº de identificación del equipo de aplicación</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="equipment_number" class="form-control"
+                                formControlName="equipment_number">
+                        </div>
+                        <div *ngIf="(equipment_number?.invalid && equipment_number?.touched) || (equipment_number?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="equipment_number?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="description" class="col-form-label fw-bold">Descripción </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="description" class="form-control" formControlName="description">
+                        </div>
+                        <div *ngIf="(description?.invalid && description?.touched) || (description?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="description?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="ROMA" class="col-form-label fw-bold">ROMA</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="ROMA" class="form-control" formControlName="ROMA">
+                        </div>
+                        <div *ngIf="(ROMA?.invalid && ROMA?.touched) || (ROMA?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="ROMA?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="acquisition_date" class="col-form-label fw-bold">Fecha de adquisición</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="acquisition_date" class="form-control" formControlName="acquisition_date">
+                        </div>
+                        <div *ngIf="(acquisition_date?.invalid && acquisition_date?.touched) || (acquisition_date?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="acquisition_date?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inspection_date" class="col-form-label fw-bold">Fecha de inspección</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="inspection_date" class="form-control" formControlName="inspection_date">
+                        </div>
+                        <div *ngIf="(inspection_date?.invalid && inspection_date?.touched) || (inspection_date?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="inspection_date?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addEquipo(equipoForm.value)"> <span> Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<p *ngIf="mensaje" class="text-info text-center"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales"> Añadir más.</a></p>

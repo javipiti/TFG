@@ -1,0 +1,73 @@
+<app-admin-header></app-admin-header>
+
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Lista de acciones fitosanitarias</h3>
+</div>
+
+<hr>
+<div *ngIf="hayInfo; else noHayInfo">
+
+
+    <div class="d-flex justify-content-center m-4">
+        <span> Mostrando {{size}} de {{num_acciones}}  acciones fitosanitarias.</span>
+    </div>
+    <table class="table table-propio table-hover shadow rounded p-2">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Explotación</th>
+                <th scope="col">Orden de asesoramiento</th>
+                <th scope="col">Efectividad</th>
+                <th scope="col">Superficie</th>
+                <th scope="col">Técnica</th>
+                <th scope="col">Aplicador</th>
+                <th scope="col">Medida de control</th>
+                <th scope="col">Plaga</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of acciones?.content; index as i">
+                <th scope="row">{{a.id}}</th>
+                <td>{{a.date}}</td>
+                <td>{{a.farmId.id}}</td>
+                <td>{{orden}}</td>
+                <td>{{a.efectiveness}}</td>
+                <td>{{a.treated_surface}}</td>
+                <td>{{a.technique}}</td>
+                <td>{{a.applicator}}</td>
+                <td>{{a.control_measures}}</td>
+                <td>{{a.plague}}</td>
+                
+                
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div class="d-flex justify-content-center">
+        <div *ngIf="!first">
+            <button type="button" class="btn flecha" (click)="paginaAnterior(page)"><i
+                    class="bi bi-arrow-left-short" style="font-size:24px"></i></button>
+        </div>
+
+        <span class="mt-3"> Página: {{page}} de {{pages}} </span>
+
+        <div *ngIf="!last">
+            <button type="button" class="btn flecha" (click)="paginaSiguiente(page)"><i
+                    class="bi bi-arrow-right-short" style="font-size:24px"></i></button>
+        </div>
+    </div>
+
+    
+</div>
+<ng-template #noHayInfo>
+    <p class="text-info text-center shadow rounded p-4"> No hay información</p>
+</ng-template>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" class="modales" href=""> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>

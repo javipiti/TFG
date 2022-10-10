@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Subir archivo CSV</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Subir CSV </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">ID de la explotación: </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="number" id="farmID" class="form-control" [(ngModel)]="farmID">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">Tipo de archivo: </label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select" [(ngModel)]="tipo">
+                            <option value=""> Seleccionar</option>
+                            <option value="HARVEST">Cosecha</option>
+                            <option value="ANALYSIS">Análisis</option>
+                            <option value="PHYTOSANITARY">Acción fitosanitaria</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="file" class="col-form-label fw-bold">Archivo: <i class="bi bi-info-circle"
+                            data-bs-toggle="tooltip"
+                            title="&nbsp; Los campos del archivo CSV deben estar separados por ';'.">
+                        </i></label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="file" id="file" class="form-control" (change)="onFileSelected($event)">
+                    </div>
+
+                    <div *ngIf="file" class="col-auto">
+                        <span>Archivo seleccionado {{fileName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="d-flex justify-content-center m-5">
+            <a type="button" style="--clr:#1e9bff" class="boton" (click)="subirArchivo()">
+                <span> Subir archivo </span> <i></i></a>
+        </div>
+    </div>
+</div>
+
+<p class="text-info text-center shadow rounded p-4" *ngIf="mensaje">{{mensaje}} <br> <a type="button" (click)="reset()"
+        class="modales">
+        Añadir más.</a></p>
+
+<p class="text-danger text-center shadow rounded p-4" *ngIf="error">{{error}} </p>

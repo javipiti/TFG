@@ -1,0 +1,391 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir identifación a la explotación: {{id}}</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/consultar-explotaciones">Lista de explotaciones </a></li>
+        <li class="breadcrumb-item"><a href="principal/consultar-explotaciones/{{id}}"> Información explotación {{id}} </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir identifación {{id}}</li>
+    </ol>
+</nav>
+<hr>
+
+<p class="text-danger">{{error}} </p>
+
+<div class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <form [formGroup]="infoForm">
+
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="liczepa" class="col-form-label fw-bold">LIC/ZEPA <i class="bi bi-info-circle"
+                                    data-bs-toggle="tooltip" data-html="true"
+                                    title="LIC: Lugar de Importancia Comunitaria. &#013;ZEPA: Zona de Especial Protección para las Aves.">
+                                </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select" id="liczepa" formControlName="liczepa">
+                                <option value="YES"> Sí</option>
+                                <option value="NO">No</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(liczepa?.invalid && liczepa?.touched) || (liczepa?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="liczepa?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="area" class="col-form-label fw-bold">Área <i class="bi bi-info-circle"
+                                    data-bs-toggle="tooltip" data-html="true"
+                                    title="Área de la explotación en hectáreas.">
+                                </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="area" class="form-control" formControlName="area">
+                        </div>
+                        <div *ngIf="(area?.invalid && area?.touched) || (area?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="area?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="crop" class="col-form-label fw-bold">Tipo de cultivo</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="crop" class="form-control" formControlName="crop">
+                        </div>
+                        <div *ngIf="(crop?.invalid && crop?.touched) || (crop?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="crop?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="REXA_variety" class="col-form-label fw-bold">Variedad REXA
+                                <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-html="true"
+                                    title="Variedad REXA del cultivo">
+                                </i>
+                            </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="REXA_variety" class="form-control" formControlName="REXA_variety">
+                        </div>
+                        <div *ngIf="(REXA_variety?.invalid && REXA_variety?.touched) || (REXA_variety?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="REXA_variety?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="seedTime" class="col-form-label fw-bold">Fecha de la siembra</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="seedTime" class="form-control" formControlName="seedTime">
+                        </div>
+                        <div *ngIf="(seedTime?.invalid && seedTime?.touched) || (seedTime?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="seedTime?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="collectionTime" class="col-form-label fw-bold">Fecha de recogida de la
+                                siembra</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="collectionTime" class="form-control"
+                                formControlName="collectionTime">
+                        </div>
+                        <div *ngIf="(collectionTime?.invalid && collectionTime?.touched) || (collectionTime?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="collectionTime?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start " formGroupName="SIGPAC">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="SIGPAC" class="col-form-label fw-bold">SIGPAC ID <i class="bi bi-info-circle"
+                                    data-bs-toggle="tooltip"
+                                    title="Identificador del Sistema de Información Geográfica de Parcelas Agrícolas. &#013; Puede consultarlo en la sección Explotaciones/SIGPACs.">
+                                </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="SIGPAC" class="form-control" formControlName="id">
+                        </div>
+                        <div *ngIf="(SIGPAC?.invalid && SIGPAC?.touched) || (SIGPAC?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="SIGPAC?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="type" class="col-form-label fw-bold">Tipo de explotación</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select" id="type" formControlName="type">
+                                <option value="S">Secano</option>
+                                <option value="R">Regadío</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(type?.invalid && type?.touched) || (type?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="type?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="open" class="col-form-label fw-bold">Tipo de parcela</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select" id="open" formControlName="open/protected">
+                                <option value="M"> Malla</option>
+                                <option value="BP">Bajo plástico</option>
+                                <option value="INV">Invernadero</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(open?.invalid && open?.touched) || (open?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="open?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="integrated_system_advice" class="col-form-label fw-bold">Sistema de
+                                asesoramiento integrado en la explotación</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select" id="integrated_system_advice"
+                                formControlName="integrated_system_advice">
+                                <option value="AE">Agricultura Ecológica</option>
+                                <option value="PI">Producción Integrada</option>
+                                <option value="CP">Certificación Privada</option>
+                                <option value="AO">Asistida de un asesor</option>
+                                <option value="AI">Agrupación de Tratamiento Integrado en Agricultura</option>
+                                <option value="GC">Sin obligación de aplicar la GIP</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(integrated_system_advice?.invalid && integrated_system_advice?.touched) || (integrated_system_advice?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="integrated_system_advice?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="entryDate" class="col-form-label fw-bold">Fecha de creación de la
+                                explotación</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="entryDate" class="form-control" formControlName="entryDate">
+                        </div>
+                    </div>
+                    <div *ngIf="(entryDate?.invalid && entryDate?.touched) || (entryDate?.invalid && invalido)" class="m-3">
+                        <p class="validacion" *ngIf="entryDate?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="dischargeDate" class="col-form-label fw-bold">Fecha de cesión de la
+                                explotación</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="dischargeDate" class="form-control" formControlName="dischargeDate">
+                        </div>
+                        <div *ngIf="(dischargeDate?.invalid && dischargeDate?.touched) || (dischargeDate?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="dischargeDate?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="vulnerable_nitrate_zone" class="col-form-label fw-bold">Zona vulnerable de
+                                nitratos</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select" id="vulnerable_nitrate_zone"
+                                formControlName="vulnerable_nitrate_zone">
+                                <option value="YES"> Sí</option>
+                                <option value="NO'">No</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(vulnerable_nitrate_zone?.invalid && vulnerable_nitrate_zone?.touched) || (vulnerable_nitrate_zone?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="vulnerable_nitrate_zone?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="water" class="col-form-label fw-bold">Distancia al pozo/agua <i
+                                    class="bi bi-info-circle" data-bs-toggle="tooltip"
+                                    title="Distancia al pozo o a la toma de agua más próxima a la explotación en metros.">
+                                </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="water" class="form-control"
+                                formControlName="well/water intake distance">
+                        </div>
+                        <div *ngIf="(water?.invalid && water?.touched) || (water?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="water?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="river" class="col-form-label fw-bold">Distancia al río/embalse <i
+                                    class="bi bi-info-circle" data-bs-toggle="tooltip"
+                                    title="Distancia al río o embalse más cercano a la explotación.">
+                                </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="river" class="form-control"
+                                formControlName="river/reservoir distance">
+                        </div>
+                        <div *ngIf="(river?.invalid && river?.touched) || (river?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="river?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="control_station_reference" class="col-form-label fw-bold">Estación de control de
+                                referencia</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="control_station_reference" class="form-control"
+                                formControlName="control_station_reference">
+                        </div>
+                        <div *ngIf="(control_station_reference?.invalid && control_station_reference?.touched) || (control_station_reference?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="control_station_reference?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="tenure_regime" class="col-form-label fw-bold">Régimen de tenencia</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="tenure_regime" class="form-control" formControlName="tenure_regime">
+                        </div>
+                        <div *ngIf="(tenure_regime?.invalid && tenure_regime?.touched) || (tenure_regime?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="tenure_regime?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <p class="text-danger">{{error}} </p>
+            
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addInfo(infoForm.value)"> <span> Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>

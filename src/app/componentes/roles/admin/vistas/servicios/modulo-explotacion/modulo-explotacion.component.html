@@ -1,0 +1,201 @@
+<app-admin-header></app-admin-header>
+
+<h1 class="d-flex justify-content-center m-3"> Módulo de explotación</h1>
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado de la máquina </h4>
+<hr>
+<ul *ngIf="checkExplotacion.status == 'UP'; else maquinaStatus">
+    <li class="list-group-item list-group-item-success text-center">{{checkExplotacion.status}}</li>
+</ul>
+<ng-template #maquinaStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.status}}</li>
+    </ul>
+</ng-template>
+
+<hr>
+
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: clientConfigServer</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.clientConfigServer.status == 'UP'; else clientStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.clientConfigServer.status}}</li>
+
+    <li class="list-group-item text-center">
+        Detalles: {{checkExplotacion.components.clientConfigServer.details.propertySources}}</li>
+</ul>
+<ng-template #clientStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.clientConfigServer.status}}</li>
+    </ul>
+</ng-template>
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: db</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.db.status == 'UP'; else dbStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.db.status}}</li>
+    <li class="list-group-item text-center">
+        Database: {{checkExplotacion.components.db.details.database}}
+    </li>
+    <li class="list-group-item text-center">
+        ValidationQuery: {{checkExplotacion.components.db.details.validationQuery}}
+    </li>
+</ul>
+<ng-template #dbStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.db.status}}</li>
+        <li class="list-group-item text-center">
+            Database: {{checkExplotacion.components.db.details.database}}
+        </li>
+        <li class="list-group-item text-center">
+            ValidationQuery: {{checkExplotacion.components.db.details.validationQuery}}
+        </li>
+    </ul>
+</ng-template>
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: discoveryComposite</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.discoveryComposite.status == 'UP'; else discoveryCompositeStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.discoveryComposite.status}}</li>
+    <li class="list-group-item text-center">
+        {{checkExplotacion.components.discoveryComposite.description}}
+    </li>
+
+</ul>
+<ng-template #discoveryCompositeStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.discoveryComposite.status}}</li>
+        <li class="list-group-item text-center">
+            {{checkExplotacion.components.discoveryComposite.description}}
+        </li>
+    </ul>
+</ng-template>
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: diskSpace</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.diskSpace.status == 'UP'; else diskSpaceStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.diskSpace.status}}</li>
+    <li class="list-group-item text-center">
+        Tamaño total: {{checkExplotacion.components.diskSpace.details.total}}
+    </li>
+    <li class="list-group-item text-center">
+        Tamaño libre: {{checkExplotacion.components.diskSpace.details.free}}
+    </li>
+
+    <li class="list-group-item text-center">
+        Límite: {{checkExplotacion.components.diskSpace.details.threshold}}
+    </li>
+
+</ul>
+<ng-template #diskSpaceStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.diskSpace.status}}</li>
+        <li class="list-group-item text-center">
+            Tamaño total: {{checkExplotacion.components.diskSpace.details.total}}
+        </li>
+        <li class="list-group-item text-center">
+            Tamaño libre: {{checkExplotacion.components.diskSpace.details.free}}
+        </li>
+
+        <li class="list-group-item text-center">
+            Límite: {{checkExplotacion.components.diskSpace.details.threshold}}
+        </li>
+    </ul>
+</ng-template>
+
+
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: mail</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.mail.status == 'UP'; else mailStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.mail.status}}</li>
+    <li class="list-group-item text-center">
+        Localización: {{checkExplotacion.components.mail.details.location}}
+    </li>
+
+</ul>
+<ng-template #mailStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.mail.status}}</li>
+        <li class="list-group-item text-center">
+            Localización: {{checkExplotacion.components.mail.details.location}}
+        </li>
+    </ul>
+</ng-template>
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: ping</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.ping.status == 'UP'; else mailStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.ping.status}}</li>
+
+</ul>
+<ng-template #mailStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.ping.status}}</li>
+    </ul>
+</ng-template>
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: rabbit</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.rabbit.status == 'UP'; else rabbitStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.rabbit.status}}</li>
+    <li class="list-group-item text-center">
+        Versión: {{checkExplotacion.components.rabbit.components.rabbitTemplate.details.version}}</li>
+
+</ul>
+<ng-template #rabbitStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.rabbit.status}}</li>
+        <li class="list-group-item text-center">
+            Versión: {{checkExplotacion.components.rabbit.components.rabbitTemplate.details.version}}</li>
+    </ul>
+</ng-template>
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Estado del componente: refreshScope</h4>
+<hr>
+<ul *ngIf="checkExplotacion.components.refreshScope.status == 'UP'; else refreshScopeStatus">
+    <li class="list-group-item list-group-item-success text-center">
+        {{checkExplotacion.components.refreshScope.status}}</li>
+</ul>
+<ng-template #refreshScopeStatus>
+    <ul>
+        <li class="list-group-item list-group-item-danger text-center">
+            {{checkExplotacion.components.refreshScope.status}}</li>
+    </ul>
+</ng-template>
+
+<hr>
+<h4 class="d-flex justify-content-center text-black"> Reiniciar módulo de usuario</h4>
+<hr>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <a type="button" style="--clr:#1e9bff" class="boton" (click)="restartExplotacionService()"> <span>Reiniciar servicio </span> <i></i></a>
+     <br>
+    <p *ngIf="mostrarMensaje" class="text-center text-info shadow rounded p-2">{{mensaje}}</p>
+</div>
+<hr>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" href="" class="modales"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>

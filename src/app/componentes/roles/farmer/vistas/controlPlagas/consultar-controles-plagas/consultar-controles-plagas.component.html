@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Lista de controles de plaga</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lista control de plagas </li>
+    </ol>
+</nav>
+<hr>
+
+<div class="d-flex flex-row justify-content-start">
+    <div class="d-flex justify-content-center p-2">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="farmID" class="col-form-label fw-bold">ID de la explotación: </label>
+            </div>
+            <div class="col-auto">
+                <input type="number" id="farmID" class="form-control" [(ngModel)]="farmID">
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-center m-5" *ngIf="farmID">
+    <a type="button" style="--clr:#1e9bff" class="boton" href="principal/control-plagas/explotacion/{{farmID}}"> <span>
+            Buscar controles </span> <i></i></a>
+</div>
+
+
+<div *ngIf="hay">
+    <div class="d-flex justify-content-center m-4">
+        <span> Mostrando {{size}} de {{num_explotaciones}} acciones.</span>
+    </div>
+    <table class="table table-propio2 table-hover shadow rounded p-2">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">ID operador </th>
+                <th scope="col">Nombre de la entidad</th>
+                <th scope="col">Información</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of controles?.content; index as i">
+                <th scope="row"> {{c.id}} </th>
+                <td>{{c.entity_operator_id}}</td>
+                <td>{{c.entity_name}}</td>
+                <td class="celda">
+                    <a routerLink="control-plagas/{{c.id}}" style="--i:#56CCF2;--j:#2F80ED;" class="iconos">
+                        <span class="icon"><i class="bi bi-search"></i></span>
+                        <span class="title">Consultar</span>
+                    </a>
+                </td>
+
+                <td class="celda">
+                    <a style="--i:#FF9966;--j:#FF5E62;" class="iconos" data-bs-toggle="modal"
+                        data-bs-target="#eliminarControl" (click)="guardarID(c.id)">
+                        <span class="icon"><i class="bi bi-trash"></i></span>
+                        <span class="title">Eliminar</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <div *ngIf="!first">
+            <button type="button" class="btn flecha" (click)="paginaAnterior(page)"><i
+                    class="bi bi-arrow-left-short" style="font-size:24px"></i></button>
+        </div>
+
+        <span class="mt-3"> Página: {{page}} de {{pages}} </span>
+
+        <div *ngIf="!last">
+            <button type="button" class="btn flecha" (click)="paginaSiguiente(page)"><i
+                    class="bi bi-arrow-right-short" style="font-size:24px"></i></button>
+        </div>
+    </div>
+</div>
+
+<p class="text-center text-danger shadow rounded p-4" *ngIf="error">{{error}}</p>
+
+<!-- Modal eliminarControl-->
+<div class="modal fade" id="eliminarControl" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">¿Eliminar control?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-row justify-content-between ">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="deleteControl()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

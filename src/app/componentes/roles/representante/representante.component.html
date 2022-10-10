@@ -1,0 +1,163 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 border-end border-success"
+            style="background:#042331; width: 320px;">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100 mb-5">
+
+                <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="menu">
+                    <li class="nav-item w-100">
+                        <a routerLink="" class="nav-link align-middle px-0">
+                            <span> Notificaciones</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a href="#explotaciones" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Explotaciones</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="explotaciones" data-bs-parent="#menu">
+
+                            <li class="fondo">
+                                <a routerLink="consultar-explotaciones" class="nav-link px-0"> <span
+                                        class="colocarSpan">- Consultar </span></a>
+                            </li>
+
+                            <li class="fondo">
+                                <a routerLink="sigpacs" class="nav-link px-0"> <span class="colocarSpan">- SIGPACs
+                                    </span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a href="#cosechas" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Cosechas</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="cosechas" data-bs-parent="#menu">
+
+                            <li class="fondo">
+                                <a routerLink="añadir-cosecha" class="nav-link px-0"> <span class="colocarSpan">-
+                                        Añadir</span></a>
+                            </li>
+                            <li class="fondo">
+                                <a routerLink="cosechas" class="nav-link px-0"> <span class="colocarSpan">- Consultar
+                                    </span></a>
+                            </li>
+
+                            <li class="fondo">
+                                <a routerLink="subir-cosecha" class="nav-link px-0"> <span class="colocarSpan">- Subir
+                                        archivo </span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a href="#asesores" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Asesoría</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="asesores" data-bs-parent="#menu">
+                            <li class="fondo">
+                                <a routerLink="añadir-asesor" class="nav-link px-0"> <span class="colocarSpan">-
+                                        Añadir</span></a>
+                            </li>
+                            <li class="fondo">
+                                <a routerLink="asesores" class="nav-link px-0"> <span class="colocarSpan">- Consultar
+                                    </span></a>
+                            </li>
+
+                            <li class="fondo">
+                                <a routerLink="añadir-visita" class="nav-link px-0"> <span class="colocarSpan">- Añadir
+                                        visita </span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a href="#analisis" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Análisis</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="analisis" data-bs-parent="#menu">
+                            <li class="fondo">
+                                <a routerLink="añadir-analisis" class="nav-link px-0"> <span class="colocarSpan">-
+                                        Añadir</span></a>
+                            </li>
+                            <li class="fondo">
+                                <a routerLink="analisis" class="nav-link px-0"> <span class="colocarSpan">- Consultar
+                                    </span></a>
+                            </li>
+
+                            <li class="fondo">
+                                <a routerLink="subir-analisis" class="nav-link px-0"> <span class="colocarSpan">- Subir
+                                        archivo </span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item w-100">
+                        <a href="#equipos" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Equipos de aplicación</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="equipos" data-bs-parent="#menu">
+                            <li class="fondo">
+                                <a routerLink="añadir-equipo" class="nav-link px-0"> <span class="colocarSpan">-
+                                        Añadir</span></a>
+                            </li>
+                            <li class="fondo">
+                                <a routerLink="equipos" class="nav-link px-0"> <span class="colocarSpan">- Consultar
+                                    </span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a routerLink="subir-csv" class="nav-link px-0 align-middle">
+                            <span>Subir CSV</span></a>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a href="#Plagas" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Plagas</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="Plagas" data-bs-parent="#menu">
+                            <li class="fondo">
+                                <a routerLink="añadir-control-plagas" class="nav-link px-0"> <span class="colocarSpan">-
+                                        Añadir</span></a>
+                            </li>
+                            <li class="fondo">
+                                <a routerLink="control-plagas" class="nav-link px-0"> <span class="colocarSpan">-
+                                        Consultar </span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item w-100">
+                        <a href="#fitosanitario" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <span> Acciones fitosanitarias</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="fitosanitario" data-bs-parent="#menu">
+                            <li class="fondo">
+                                <a routerLink="añadir-accion-fitosanitaria" class="nav-link px-0"> <span
+                                        class="colocarSpan">- Añadir</span></a>
+                            </li>
+                            <li class="fondo">
+                                <a routerLink="acciones-fitosanitarias" class="nav-link px-0"> <span
+                                        class="colocarSpan">- Consultar</span></a>
+                            </li>
+
+                            <li class="fondo">
+                                <a routerLink="subir-accion-fitosanitaria" class="nav-link px-0"> <span
+                                        class="colocarSpan">- Subir archivo </span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col py-3">
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

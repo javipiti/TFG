@@ -1,0 +1,153 @@
+<app-admin-header></app-admin-header>
+
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Lista de explotaciones</h3>
+</div>
+
+<hr>
+
+<div *ngIf="hayInfo; else noHayInfo">
+    <div class="d-flex justify-content-center m-4">
+        <span> Mostrando {{size}} de {{num_explotaciones}} explotaciones.</span>
+    </div>
+    <table class="table table-propio table-hover shadow rounded p-2">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tipo</th>
+                <th scope="col"> Info</th>
+                <th scope="col" *ngIf="user.role?.role_type == 'inspector'">Descargar cuaderno de explotación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of explotaciones?.content; index as i">
+                <th scope="row">{{e.farm.id}}</th>
+                <td>{{e.farm.farm_type}}</td>
+                <td class="celda">
+                    <a type="button" style="--i:#56CCF2;--j:#2F80ED;" class="iconos" (click)="verPlotID(e.farm.id)">
+                        <span class="icon"><i class="bi bi-search azul"></i></span>
+                        <span class="title">Consultar</span>
+                    </a>
+
+                </td>
+                <td *ngIf="user.role?.role_type == 'inspector'" >
+                    <a type="button" style="--i:#a955ff;--j:#ea51ff;" class="iconos"
+                        (click)="descargarArchivo(e.farm.id)">
+                        <span class="icon"><i class="bi bi-download descargar"></i></span>
+                        <span class="title">Descargar</span>
+                    </a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center">
+        <div *ngIf="!first">
+            <button type="button" class="btn flecha" (click)="paginaAnterior(page)"><i class="bi bi-arrow-left-short"
+                    style="font-size:24px"></i></button>
+        </div>
+
+        <span class="mt-3"> Página: {{page}} de {{pages}} </span>
+
+        <div *ngIf="!last">
+            <button type="button" class="btn flecha" (click)="paginaSiguiente(page)"><i class="bi bi-arrow-right-short"
+                    style="font-size:24px"></i></button>
+        </div>
+    </div>
+
+    <div *ngIf="mostrarPlotID">
+        <div *ngIf="existePLOT; else noExiste">
+            <div class="d-flex justify-content-center m-4">
+                <span>Mostrando identificación de la explotación {{farmID}}. </span>
+            </div>
+            <table class="table table-propio table-hover shadow rounded p-2">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">LIC/ZEPA</th>
+                        <th scope="col">Área</th>
+                        <th scope="col">Cultivo</th>
+                        <th scope="col">REXA</th>
+                        <th scope="col">Siembra</th>
+                        <th scope="col">Tiempo de recogida</th>
+                        <th scope="col">SIGPAC ID</th>
+                        <th scope="col">SIGPAC Área</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Polígono</th>
+                        <th scope="col">Provincia</th>
+                        <th scope="col">Uso SIGPAC</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{plotID.id}}</th>
+                        <td>{{plotID.liczepa}}</td>
+                        <td>{{plotID.area}}</td>
+                        <td>{{plotID.crop}}</td>
+                        <td>{{plotID.REXA_variety}}</td>
+                        <td>{{plotID.seedTime}}</td>
+                        <td>{{plotID.collectionTime}}</td>
+                        <td>{{plotID.SIGPAC.id}}</td>
+                        <td>{{plotID.SIGPAC.enclosure}}</td>
+                        <td>{{plotID.SIGPAC.municipality}}</td>
+                        <td>{{plotID.SIGPAC.polygon}}</td>
+                        <td>{{plotID.SIGPAC.province}}</td>
+                        <td>{{plotID.SIGPAC.SIGPAC_use}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-propio table-hover shadow rounded p-2">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Abierta/Protegida</th>
+                        <th scope="col">Sistema de asesoramiento integrado</th>
+                        <th scope="col">Fecha de creación</th>
+                        <th scope="col">Fecha de cesión</th>
+                        <th scope="col">Zona vulnerable a nitratos</th>
+                        <th scope="col">Distancia pozo/toma de agua</th>
+                        <th scope="col">Distancia al río/embalse</th>
+                        <th scope="col">Estación de control</th>
+                        <th scope="col">Regimen de tenencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>{{plotID.type}}</td>
+                        <td>{{plotID['open/protected']}}</td>
+                        <td>{{plotID.integrated_system_advice}}</td>
+                        <td>{{plotID.entryDate}}</td>
+                        <td>{{plotID.dischargeDate}}</td>
+                        <td>{{plotID.vulnerable_nitrate_zone}}</td>
+                        <td>{{plotID['well/water intake distance']}}</td>
+                        <td>{{plotID['river/reservoir distance']}}</td>
+                        <td>{{plotID.control_station_reference}}</td>
+                        <td>{{plotID.tenure_regime}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <ng-template #noExiste>
+            <p class="text-info text-center shadow rounded p-4"> No hay identificación de la explotación {{farmID}}.
+            </p>
+
+        </ng-template>
+    </div>
+</div>
+<ng-template #noHayInfo>
+    <p class="text-info text-center shadow rounded p-4"> No hay información. </p>
+</ng-template>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" href="" class="modales"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i>
+            Volver
+        </span></a>
+</div>

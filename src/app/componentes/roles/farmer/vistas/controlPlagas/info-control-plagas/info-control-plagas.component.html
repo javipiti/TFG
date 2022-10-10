@@ -1,0 +1,137 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Mostrando control de plaga con ID: {{id}}</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/control-plagas/explotacion/{{explotacionID}}">Lista de control de plagas (Explotacion {{explotacionID}}) </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Información cosecha ({{id}}) </li>
+    </ol>
+</nav>
+<hr>
+
+
+<div class="container">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">Sistema de asesoramiento </span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{control.advice_system}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="text-decoration-none" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarSistema">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">Nombre de entidad </span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{control.entity_name}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="text-decoration-none" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarEntidad">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">ID operador </span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{control.entity_operator_id}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="text-decoration-none" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarOperador">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+        
+    </div>
+</div>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" href="principal/control-plagas/explotacion/{{explotacionID}}" class="modales"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>
+
+<!-- Modal editarSistema-->
+<div class="modal fade" id="editarSistema" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Sistema de asesoramiento </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="reset()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Sistema de asesoramiento : </label>
+                <select class="form-select" id="integrated_system_advice" [(ngModel)]="control.advice_system">
+                    <option selected>Seleccionar</option>
+                    <option value="AE"> Agricultura Ecológica</option>
+                    <option value="PI">Producción Integrada</option>
+                    <option value="CP">Certificación Privada</option>
+                    <option value="AO">Asistida de un asesor</option>
+                    <option value="AI">Agrupación de Tratamiento Integrado en Agricultura</option>
+                </select>
+
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updateControl()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+<!-- Modal editarEntidad-->
+<div class="modal fade" id="editarEntidad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Nombre de entidad </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="reset()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Nombre de entidad: </label>
+                <input type="text" [(ngModel)]="control.entity_name">
+
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updateControl()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal editarOperador-->
+<div class="modal fade" id="editarOperador" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">ID del operador </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="reset()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Operador: </label>
+                <input type="text" [(ngModel)]="control.entity_operator_id">
+
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updateControl()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

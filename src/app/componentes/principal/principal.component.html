@@ -1,0 +1,19 @@
+<div *ngIf="user.role?.role_type == 'admin'">
+    <app-admin></app-admin>
+</div>
+
+<div *ngIf="user.role?.role_type == 'farmer'">
+    <app-farmer></app-farmer>
+</div>
+
+<div *ngIf="user.role?.role_type == 'guest'">
+    <app-guest></app-guest>
+</div>
+
+<div *ngIf="user.role?.role_type == 'farm_representative'">
+    <app-representante></app-representante>
+</div>
+
+<div *ngIf="user.role?.role_type == 'inspector'">
+    <app-admin></app-admin>
+</div>

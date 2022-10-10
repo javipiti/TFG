@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-center align-items-center bg-image"
+    style="background-image: url('assets/puerta.PNG'); height: 100vh;background-size: cover; background-repeat: no-repeat;">
+    <div *ngIf="user.role?.role_type != 'GUEST'" class="d-flex flex-column m-5">
+        <p class="shadow p-5 rounded bg-white">Completa tu registro validando tu correo y DNI a través de Cuenta><a
+                href="perfil">Mi perfil</a> </p>
+        <br>
+        <p *ngIf="user.validation_status == 'EMAIL_VALIDATED'" class="shadow p-5 rounded text-info bg-white">Su correo
+            ha sido validado con éxito pero aún falta verificar su DNI.
+        </p>
+    </div>
+</div>

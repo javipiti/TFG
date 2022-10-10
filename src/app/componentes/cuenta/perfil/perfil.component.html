@@ -1,0 +1,502 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-start align-items-center bg-image"
+    style="background-image: url('assets/cuenta.jpg'); height: 340px;background-size: cover; background-repeat: no-repeat;">
+    
+</div>
+
+<div class="container">
+	<div class="d-flex flex-column">
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Nombre </span></div>
+			<div class="d-flex col-6 justify-content-start p-2">{{user.name}}</div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarNombre">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Apellidos </span></div>
+			<div class="d-flex col-6 justify-content-start p-2">{{user.surname}}</div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarApellido">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Rol </span></div>
+			<div class="d-flex col-9 justify-content-start p-2">
+				<div *ngIf="user?.role?.name == 'FARMER';else invitado">
+					<span>Agricultor/Agricultora</span>
+				</div>
+			</div>
+			<ng-template #invitado>
+				<div *ngIf="user?.role?.name == 'GUEST'">
+					<span>Invitado/Invitada</span>
+				</div>
+			</ng-template>
+
+
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">NIF </span></div>
+			<div class="d-flex col-6 justify-content-start p-2">{{user.nif}}</div>
+			
+			<div class="d-flex col-3 justify-content-end p-2">
+				<!-- es para actualizar el nif, el backend devuelve un 200 pero no cambia nada
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarNif">
+					Editar
+				</a>
+				-->
+			</div>
+			
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">E-mail </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> {{user.email}}</div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<!-- es para actualizar el correo, el backend devuelve un 200 pero no cambia nada
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarEmail">
+					Editar
+				</a>
+			-->
+			</div>
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Contraseña </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> *************** </div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarPassword">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Teléfono </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> {{user.phone}} </div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarTelefono">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Dirección </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> {{user.address}} </div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarDireccion">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Código postal </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> {{user.postal_code}} </div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarPostal">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">Provincia </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> {{user.province}} </div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarProvincia">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+		<div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+			<div class="d-flex col-3 p-2"> <span class="fw-bold">País </span></div>
+			<div class="d-flex col-6 justify-content-start p-2"> {{user.country}} </div>
+			<div class="d-flex col-3 justify-content-end p-2">
+				<a type="button" class="modales" href="#" data-bs-toggle="modal"
+					data-bs-target="#cambiarPais">
+					Editar
+				</a>
+			</div>
+		</div>
+		<hr>
+
+		<div
+			*ngIf="user?.validation_status == 'VALIDATED' || user?.validation_status == 'EMAIL_VALIDATED'; else noValidado">
+			<div class="d-flex flex-row justify-content-between align-items-center shadow p-2 rounded">
+				<div class="d-flex col-3 p-2"> <span class="fw-bold">Estado de validación </span></div>
+				<div class="d-flex col-9 justify-content-start p-2">
+					<span class="alert alert-primary" role="alert">Correo validado</span>
+				</div>
+			</div>
+			<hr>
+		</div>
+
+		<ng-template #noValidado>
+			<div class="d-flex flex-row justify-content-between align-items-center shadow p-2 rounded">
+				<div class="d-flex col-3 p-2"> <span class="fw-bold">Estado de validación </span></div>
+				<div class="d-flex col-6 justify-content-start p-2"><span class="alert alert-danger" role="alert">Correo
+						no validado</span> </div>
+				<div class="d-flex col-3 justify-content-end p-2">
+					<a type="button" class="modales" href="#" data-bs-toggle="modal"
+						data-bs-target="#validarCorreo">
+						Validar
+					</a>
+
+				</div>
+			</div>
+			<hr>
+		</ng-template>
+
+
+		<div *ngIf="user?.validation_status == 'VALIDATED' || user?.validation_status == 'EMAIL_VALIDATED'">
+			<div class="d-flex flex-row justify-content-between align-items-center shadow p-2 rounded">
+				<div class="d-flex col-3 p-2"> <span class="fw-bold ">Estado de verificación </span></div>
+				<div class="d-flex col-9 justify-content-start p-2">
+					<div class="d-flex flex-column bd-highlight mb-3">
+						<div *ngIf="user?.role?.role_type == 'farmer' || user?.role?.role_type == 'farm_representative' ;else noSubido">
+							<span class="alert alert-primary" role="alert">El archivo ha sido verificado por el administrador</span>
+						</div>
+						<ng-template #noSubido>
+							<div *ngIf="getContent?.status != 'WAITING_VERIFICATION'; else subido">
+								<span class="alert alert-danger" role="alert">{{verificacion.description}}</span>
+								<div *ngIf="getContent?.status != 'VERIFIED'">
+									<br>
+									<div class="d-flex flex-row justify-content-between">
+										<input (change)="onFileSelected($event)" type="file">
+										<div *ngIf="file">
+											<button class="btn btn-primary" type="button" (click)="subirArchivo()">
+												Subir
+												archivo
+												{{fileName}}</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ng-template #subido>
+								<span class="alert alert-warning" role="alert">Documento subido a la espera de ser
+									verificado.</span>
+							</ng-template>
+
+						</ng-template>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>
+
+
+
+
+<hr>
+<div class="d-flex justify-content-center m-4">
+	<h3 class="m-2 text-black">Eliminar cuenta </h3>
+	
+</div>
+<hr>
+<div class="d-flex flex-column justify-content-center align-items-center m-5">
+		<a type="button" style="--clr:#ff1867" class="boton" data-bs-toggle="modal"
+		data-bs-target="#eliminarCuenta"> <span>Eliminar cuenta</span> <i></i></a>
+</div>
+
+
+
+<!-- Modal cambiarNombre-->
+<div class="modal fade" id="cambiarNombre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarNombreLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar nombre</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Nombre: </label>
+				<input type="text" [(ngModel)]="user.name"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarApellido-->
+<div class="modal fade" id="cambiarApellido" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarApellidoLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar apellidos</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Apellidos: </label>
+				<input type="text" [(ngModel)]="user.surname"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarNif-->
+<div class="modal fade" id="cambiarNif" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarNifLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar NIF</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">NIF: </label>
+				<input type="text" [(ngModel)]="user.nif"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarEmail-->
+<div class="modal fade" id="cambiarEmail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarEmailLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar E-mail</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">E-mail: </label>
+				<input type="email" [(ngModel)]="user.email"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarPassword-->
+<div class="modal fade" id="cambiarPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarPasswordLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar contraseña</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Contraseña: </label>
+				<input type="password" [(ngModel)]="user.password"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarTelefono-->
+<div class="modal fade" id="cambiarTelefono" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarTelefonoLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar teléfono</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Teléfono: </label>
+				<input type="number" [(ngModel)]="user.phone"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarDireccion-->
+<div class="modal fade" id="cambiarDireccion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarDireccionLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar dirección</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Dirección: </label>
+				<input type="text" [(ngModel)]="user.address"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarPostal-->
+<div class="modal fade" id="cambiarPostal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarPostalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar código postal</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Código postal: </label>
+				<input type="number" [(ngModel)]="user.postal_code"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarProvincia-->
+<div class="modal fade" id="cambiarProvincia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarProvinciaLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar provincia</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">Provincia: </label>
+				<input type="text" [(ngModel)]="user.province"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal cambiarPais-->
+<div class="modal fade" id="cambiarPais" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="cambiarPaisLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Cambiar país</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"
+					(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+				<label class="m-2">País: </label>
+				<input type="text" [(ngModel)]="user.country"> <br>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+				<button type="button" class="btn btn-primary" (click)="updateUser()"
+					data-bs-dismiss="modal">Guardar cambios</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal eliminarCuenta-->
+<div class="modal fade" id="eliminarCuenta" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">¿Estás seguro de que quieres eliminar tu cuenta?</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"></button>
+			</div>
+			<div class="modal-body">
+				<div class="d-flex flex-row justify-content-between ">
+					<button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+					<button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCuenta()">Eliminar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Modal validarCorreo-->
+<div class="modal fade" id="validarCorreo" tabindex="-1" aria-labelledby="validarCorreoLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Validar correo</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"></button>
+			</div>
+			<div class="modal-body">
+
+				<span class="d-flex justify-content-center m-1">Introduce el token recibido en el correo</span>
+				<label class="d-flex justify-content-center m-1">https://localhost:8080/users/registrationConfirm?token=
+				</label>
+				<div class="d-flex justify-content-center m-1">
+					<input class="form-control input-lg" [(ngModel)]="validarTokenCorreo" type="text" required> <br>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="validarCorreo()">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>

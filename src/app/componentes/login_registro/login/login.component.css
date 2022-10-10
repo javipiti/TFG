@@ -1,0 +1,23 @@
+.gradient-custom-2 {
+
+    background: -webkit-linear-gradient(to right, #8986FE, #6561FF, #4541FE, #1712FB);
+
+    background: linear-gradient(to right, #8986FE, #6561FF, #4541FE, #1712FB);
+}
+
+.form a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+.form a:hover {
+    color: #F54ACC;
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}

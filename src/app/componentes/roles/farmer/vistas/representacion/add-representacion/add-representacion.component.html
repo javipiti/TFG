@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-start align-items-end bg-image h-25"
+    style="background-image: url('assets/representacion.PNG'); height: 100vh;background-size: cover; background-repeat: no-repeat;">
+    <h2 class="ms-5 mb-4 text-black">Añadir representante </h2>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/pedir-representacion">Representación </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir representante </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <form [formGroup]="representanteForm">
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="NIF" class="col-form-label fw-bold">NIF</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="NIF" class="form-control" formControlName="NIF">
+                        </div>
+                        <div *ngIf="(NIF?.invalid && NIF?.touched) || (NIF?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="NIF?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                            <p class="validacion" *ngIf="NIF?.errors?.['pattern']">
+                                El NIF es incorrecto.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="Autonomous_farm_register" class="col-form-label fw-bold">Registro autonómico <i
+                                    class="bi bi-info-circle" data-bs-toggle="tooltip"
+                                    title="Registro del representante de la explotación en el registro autonómico">
+                                </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="Autonomous_farm_register" class="form-control"
+                                formControlName="Autonomous_farm_register">
+                        </div>
+                        <div *ngIf="(Autonomous_farm_register?.invalid && Autonomous_farm_register?.touched) || (Autonomous_farm_register?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="Autonomous_farm_register?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="National_farm_register" class="col-form-label fw-bold"> Registro nacional <i
+                                    class="bi bi-info-circle" data-bs-toggle="tooltip"
+                                    title="Registro nacional del representante"> </i></label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="National_farm_register" class="form-control"
+                                formControlName="National_farm_register">
+                        </div>
+                        <div *ngIf="(National_farm_register?.invalid && National_farm_register?.touched) || (National_farm_register?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="National_farm_register?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="Email" class="col-form-label fw-bold">E-mail</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="Email" class="form-control" formControlName="Email">
+                        </div>
+                        <div *ngIf="(Email?.invalid && Email?.touched) || (Email?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="Email?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addRepresentante(representanteForm.value)"> <span>Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<p *ngIf="mensaje" class="text-info text-center"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales"> Añadir más.</a></p>
+
+<div class="d-flex justify-content-start ms-5 mt-3">
+    <a type="button" href="principal/pedir-representacion" class="modales"> <span> <i class="bi bi-arrow-left-short"
+                style="font-size:24px"></i> Volver
+        </span></a>
+</div>
+

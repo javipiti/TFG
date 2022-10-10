@@ -1,0 +1,165 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Mostrando analisis con ID: {{id}}</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/analisis/explotacion/{{explotacionID}}">Lista de análisis (Explotacion {{explotacionID}}) </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Información análisis {{id}}</li>
+    </ol>
+</nav>
+<hr>
+
+
+<div class="container">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">Fecha </span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{analisis.date}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarFecha">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">Tipo </span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{tipo}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarTipo">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">Lugar </span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{lugar}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarLugar">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex flex-row justify-content-between shadow p-2 rounded">
+            <div class="d-flex col-4 p-2"> <span class="fw-bold">Laboratorio</span></div>
+            <div class="d-flex col-6 justify-content-start p-2">{{analisis.laboratory}}</div>
+            <div class="d-flex col-2 justify-content-end p-2">
+                <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                    data-bs-target="#editarLaboratorio">
+                    Editar
+                </a>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button"  href="principal/analisis/explotacion/{{explotacionID}}" class="modales"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>
+
+
+<!-- Modal editarFecha-->
+<div class="modal fade" id="editarFecha" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Fecha de recogida</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+                <label class="m-2">Fecha: </label>
+				<input type="date" [(ngModel)]="analisis.date"> <br>
+				<div class="d-flex flex-row justify-content-between m-3">
+					<button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+					<button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="updateAnalisis()">Actualizar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- Modal editarTipo-->
+<div class="modal fade" id="editarTipo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Tipo</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"(click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+                <label class="m-2">Tipo: </label>
+                <select id="analysis_type" class="form-select" [(ngModel)]="analisis.analysis_type">
+                    <option value="WATER">Agua</option>
+                    <option value="VEGETABLE">Vegetal</option>
+                    <option value="SOIL">Suelo</option>
+                </select>
+				<div class="d-flex flex-row justify-content-between m-3">
+					<button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal"(click)="reset()">Cancelar</button>
+					<button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="updateAnalisis()">Actualizar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- Modal editarLugar-->
+<div class="modal fade" id="editarLugar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Lugar</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+                <label class="m-2">Lugar: </label>
+                <select id="place" class="form-select"[(ngModel)]="analisis.place">
+                    <option value="PLOT">Parcela</option>
+                    <option value="SAMPLED_BATCH">Lote de muestra</option>
+                </select>
+				<div class="d-flex flex-row justify-content-between m-3">
+					<button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+					<button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="updateAnalisis()">Actualizar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- Modal editarLaboratorio-->
+<div class="modal fade" id="editarLaboratorio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-black">Laboratorio</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="reset()"></button>
+			</div>
+			<div class="modal-body">
+                <label class="m-2">Laboratorio: </label>
+				<input type="text" [(ngModel)]="analisis.laboratory"> <br>
+				<div class="d-flex flex-row justify-content-between m-3">
+					<button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+					<button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="updateAnalisis()">Actualizar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

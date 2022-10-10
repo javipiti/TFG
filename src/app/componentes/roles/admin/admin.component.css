@@ -1,0 +1,13 @@
+.lista a:hover {
+    background-color: gold;
+    color: black;
+}
+
+.lista a{
+    color: blue;
+}
+
+.mask-custom {
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.15);
+  }

@@ -1,0 +1,721 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Mostrando explotación con ID: {{id}}</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/consultar-explotaciones">Lista de explotaciones </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Información explotación {{id}} </li>
+    </ol>
+</nav>
+<hr>
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Datos de la explotación</h3>
+</div>
+<hr>
+<div *ngIf="hayInfo; else noHayInfo">
+    <div class="container">
+        <div class="d-flex flex-column">
+            <hr>
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Tipo de explotación </span></div>
+                <div class="d-flex col-6 justify-content-start p-2">{{tipoExplotacion}}</div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarTipoExplotacion">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">LIC/ZEPA </span></div>
+                <div class="d-flex col-6 justify-content-start p-2">{{liz}}</div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarLiczepa">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Área </span></div>
+                <div class="d-flex col-6 justify-content-start p-2">{{farmInfo.area}}</div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarArea">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Cultivo </span></div>
+                <div class="d-flex col-6 justify-content-start p-2">{{farmInfo.crop}}</div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarCROP">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Variedad REXA </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.REXA_variety}}</div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarRexa">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Fecha de la siembra </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.seedTime}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarSiembra">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Fecha de recogida </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.collectionTime}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarRecogida">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">SIGPAC </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{SIGPAC.id}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarSIGPAC">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Tipo </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{tipo}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarTipo">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Tipo de parcela </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{open}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarOpen">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Sistema de asesoramiento integrado </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{sistema}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarSistema">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Fecha de creación </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.entryDate}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarCreacion">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Fecha de cesión </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.dischargeDate}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarCesión">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Zona vulnerable de nitratos </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{vulnerable}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarVulnerable">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Distancia pozo/toma de agua </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{water}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarWater">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Distancia al río/embalse </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{river}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarRiver">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Estación de control </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.control_station_reference}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarEstacion">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-between shadow rounded p-2">
+                <div class="d-flex col-4 p-2"> <span class="fw-bold">Régimen de tenencia </span></div>
+                <div class="d-flex col-6 justify-content-start p-2"> {{farmInfo.tenure_regime}} </div>
+                <div class="d-flex col-2 justify-content-end p-2">
+                    <a type="button" class="modales" href="#" data-bs-toggle="modal"
+                        data-bs-target="#editarRegimen">
+                        Editar
+                    </a>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<ng-template #noHayInfo>
+    <p class="text-info text-center shadow p-5 rounded">No se ha aportado información a esta explotación.
+        <a routerLink="añadir-informacion" class="modales"> Añadir </a> </p>
+</ng-template>
+
+<hr>
+
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Archivos de la explotación</h3>
+</div>
+
+<hr>
+<div *ngIf="hayArchivos; else noHayArchivos">
+    <div class="d-flex justify-content-center m-4">
+        <span> Mostrando {{sizeFiles}} de {{num_files}} archivos.</span>
+      </div>
+    <table class="table table-propio table-hover shadow border">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre original</th>
+                <th scope="col">Estado</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of archivos?.content; index as i">
+                <th scope="row"> {{a.id}} </th>
+                <td>{{a.original_name}}</td>
+                <td>{{a.status}}</td>
+    
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center">
+        <div *ngIf="!firstFiles">
+          <button type="button" class="btn flecha" (click)="paginaAnteriorFiles(pageFiles)"><i class="bi bi-arrow-left-short"
+              style="font-size:24px"></i></button>
+        </div>
+      
+        <span class="mt-3 mb-5"> Página: {{pageFiles}} de {{pagesFiles}} </span>
+      
+        <div *ngIf="!lastFiles">
+          <button type="button" class="btn flecha" (click)="paginaSiguienteFiles(pageFiles)"><i class="bi bi-arrow-right-short"
+              style="font-size:24px"></i></button>
+        </div>
+      </div>
+</div>
+<ng-template #noHayArchivos>
+    <p class="text-info text-center shadow p-5 rounded">No hay archivos en esta explotación </p>
+</ng-template>
+
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" class="modales" href="principal/consultar-explotaciones"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>
+
+
+<!-- Modal editarTipoExplotacion-->
+<div class="modal fade" id="editarTipoExplotacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Tipo de explotación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarm()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Tipo de explotación: </label>
+                <select class="form-select m-3" [(ngModel)]="farm.farm_type">
+                    <option value="ecological_agriculture"> Agricultura ecológica</option>
+                    <option value="integrated_production">Producción integrada</option>
+                    <option value="advised">Cultivos asesorados</option>
+                    <option value="not_advised">Cultivos no asesorados</option>
+                    <option value="extensive">Extensa</option>
+                </select>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarm()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updateFarm()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarLiczepa-->
+<div class="modal fade" id="editarLiczepa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">LIC/ZEPA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar"(click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">LIC/ZEPA: </label>
+                <select class="form-select m-3" id="liczepa" [(ngModel)]="farmInfo['LIC/ZEPA']">
+                    <option value="YES"> Sí</option>
+                    <option value="NO">No</option>
+                </select>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarCROP-->
+<div class="modal fade" id="editarCROP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">LIC/ZEPA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Nombre: </label>
+                <input type="text" [(ngModel)]="farmInfo.crop"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarArea-->
+<div class="modal fade" id="editarArea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Área</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Área: </label>
+                <input type="number" [(ngModel)]="farmInfo.area"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarRexa-->
+<div class="modal fade" id="editarRexa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Variedad REXA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Variedad REXA: </label>
+                <input type="string" [(ngModel)]="farmInfo.REXA_variety"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal editarSiembra-->
+<div class="modal fade" id="editarSiembra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Fecha de la siembra</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Fecha de la siembra: </label>
+                <input type="date" [(ngModel)]="farmInfo.seedTime"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarRecogida-->
+<div class="modal fade" id="editarRecogida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Fecha de la recogida</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Fecha de la recogida: </label>
+                <input type="date" [(ngModel)]="farmInfo.collectionTime"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarTipo-->
+<div class="modal fade" id="editarTipo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Tipo de explotación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Tipo: </label>
+                <select class="form-select m-3" [(ngModel)]="farmInfo.type">
+                    <option value="S">Secano</option>
+                    <option value="R">Regadío</option>
+                </select>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal editarOpen-->
+<div class="modal fade" id="editarOpen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Tipo de parcela</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Tipo de parcela: </label>
+                <select class="form-select m-3" id="open" [(ngModel)]="farmInfo['open/protected']">
+                    <option value="M"> Malla</option>
+                    <option value="BP">Bajo plástico</option>
+                    <option value="INV">Invernadero</option>
+                </select>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarSistema-->
+<div class="modal fade" id="editarSistema" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Sistema de asesoramiento integrado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Sistema de asesoramiento integrado: </label>
+                <select class="form-select" id="integrated_system_advice" [(ngModel)]="farmInfo.integrated_system_advice">
+                    <option value="AE"> Agricultura Ecológica</option>
+                    <option value="PI'">Producción Integrada</option>
+                    <option value="CP">Certificación Privada</option>
+                    <option value="AO'">Asistida de un asesor</option>
+                    <option value="AI">Agrupación de Tratamiento Integrado en Agricultura</option>
+                    <option value="GC">Sin obligación de aplicar la GIP</option>
+                </select>
+
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarCreacion-->
+<div class="modal fade" id="editarCreacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Fecha de creación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Fecha creación: </label>
+                <input type="date" [(ngModel)]="farmInfo.entryDate"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarCesión-->
+<div class="modal fade" id="editarCesión" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Fecha de cesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Fecha cesión: </label>
+                <input type="date" [(ngModel)]="farmInfo.dischargeDate"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarVulnerable-->
+<div class="modal fade" id="editarVulnerable" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Zona vulnerable de nitratos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Zona vulnerable de nitratos: </label>
+                <select class="form-select m-3" [(ngModel)]="farmInfo.vulnerable_nitrate_zone">
+                    <option value="YES"> Sí</option>
+                    <option value="NO">No</option>
+                </select>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarWater-->
+<div class="modal fade" id="editarWater" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Distancia al pozo o a la toma de agua</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body m-3">
+                <label class="m-2">Distancia al pozo o a la toma de agua: </label>
+                <input class="m-3" type="number" [(ngModel)]="farmInfo['well/water intake distance']"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarRiver-->
+<div class="modal fade" id="editarRiver" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Distancia al río o embalse</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Distancia al río o embalse: </label>
+                <input class="m-3" type="number" [(ngModel)]="farmInfo['river/reservoir distance']" > <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarEstacion-->
+<div class="modal fade" id="editarEstacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Estación de control de referencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Estación de control de referencia: </label>
+                <input class="m-3" type="text" [(ngModel)]="farmInfo.control_station_reference"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarRegimen -->
+<div class="modal fade" id="editarRegimen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">Régimen de tenencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">Régimen de tenencia: </label>
+                <input class="m-3" type="text" [(ngModel)]="farmInfo.tenure_regime"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal editarSIGPAC -->
+<div class="modal fade" id="editarSIGPAC" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="eliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-black">SIGPAC ID</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancelar" (click)="resetFarmInfo()"></button>
+            </div>
+            <div class="modal-body">
+                <label class="m-2">SIGPAC ID: </label>
+                <input type="text" [(ngModel)]="farmInfo.SIGPAC.id"> <br>
+                <div class="d-flex flex-row justify-content-between m-3">
+                    <button class="m-3" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="resetFarmInfo()">Cancelar</button>
+                    <button class="m-3" type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="updatePlotID()">Actualizar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

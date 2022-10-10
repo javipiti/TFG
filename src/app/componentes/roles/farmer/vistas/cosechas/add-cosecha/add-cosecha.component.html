@@ -1,0 +1,140 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir cosecha</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir cosecha </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-start ">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">ID de la explotación </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="number" id="farmID" class="form-control" [(ngModel)]="farmID">
+                    </div>
+                    <div *ngIf="error_farmID" class="m-3">
+                        <p class="validacion">
+                            {{error_farmID}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="cosechaForm">
+            
+
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="date" class="col-form-label fw-bold">Fecha de recogida</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" id="date" class="form-control" formControlName="date">
+                        </div>
+                        <div *ngIf="(date?.invalid && date?.touched) || (date?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="date?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="vegetable_product" class="col-form-label fw-bold">Vegetal</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="vegetable_product" class="form-control"
+                                formControlName="vegetable_product">
+                        </div>
+                        <div *ngIf="(vegetable_product?.invalid && vegetable_product?.touched) || (vegetable_product?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="vegetable_product?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="batch_number" class="col-form-label fw-bold">Lote</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="batch_number" class="form-control" formControlName="batch_number">
+                        </div>
+                        <div *ngIf="(batch_number?.invalid && batch_number?.touched) || (batch_number?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="batch_number?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="destination" class="col-form-label fw-bold">Destino</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="destination" class="form-control" formControlName="destination">
+                        </div>
+                        <div *ngIf="(destination?.invalid && destination?.touched) || (destination?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="destination?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex flex-row justify-content-start ">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="NIF_client" class="col-form-label fw-bold">NIF del cliente</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="NIF_client" class="form-control" formControlName="NIF_client">
+                        </div>
+                        <div *ngIf="(NIF_client?.invalid && NIF_client?.touched) || (NIF_client?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="NIF_client?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addCosecha(cosechaForm.value)"> <span> Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<p *ngIf="mensaje" class="text-info text-center"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales"> Añadir más.</a></p>

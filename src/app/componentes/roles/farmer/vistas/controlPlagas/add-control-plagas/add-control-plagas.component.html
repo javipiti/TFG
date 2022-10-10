@@ -1,0 +1,114 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir control de plagas</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir control de plagas </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <div class="d-flex flex-row justify-content-start">
+            <div class="d-flex justify-content-center p-2">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="farmID" class="col-form-label fw-bold">ID de la explotación: </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="number" id="farmID" class="form-control" [(ngModel)]="farmID">
+                    </div>
+                    <div *ngIf="error_farmID" class="m-3">
+                        <p class="validacion">
+                            {{error_farmID}}
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="plagaForm">
+
+
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="advice_system" class="col-form-label fw-bold">Sistema de asesoramiento</label>
+                        </div>
+                        <div class="col-auto">
+                            <select id="advice_system" class="form-select" formControlName="advice_system">
+                                <option value="">Seleccionar</option>
+                                <option value="AE"> Agricultura Ecológica</option>
+                                <option value="PI'">Producción Integrada</option>
+                                <option value="CP">Certificación Privada</option>
+                                <option value="AO'">Asistida de un asesor</option>
+                                <option value="AI">Agrupación de Tratamiento Integrado en Agricultura</option>
+                            </select>
+                        </div>
+                        <div *ngIf="(advice_system?.invalid && advice_system?.touched) || (advice_system?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="advice_system?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="entity_name" class="col-form-label fw-bold">Nombre de la entidad</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="entity_name" class="form-control" formControlName="entity_name">
+                        </div>
+                        <div *ngIf="(entity_name?.invalid && entity_name?.touched) || (entity_name?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="entity_name?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="entity_operator_id" class="col-form-label fw-bold">Identificador del operador
+                                del control integrado</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="entity_operator_id" class="form-control"
+                                formControlName="entity_operator_id">
+                        </div>
+                        <div *ngIf="(entity_operator_id?.invalid && entity_operator_id?.touched) || (entity_operator_id?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="entity_operator_id?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addControl(plagaForm.value)"> <span>
+                        Añadir </span> <i></i></a>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+<p *ngIf="mensaje" class="text-info text-center shadow rounded p-2"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales">
+        Añadir más.</a></p>

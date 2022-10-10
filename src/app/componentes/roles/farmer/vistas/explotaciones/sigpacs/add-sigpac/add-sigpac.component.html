@@ -1,0 +1,156 @@
+<h3 class="d-flex justify-content-center"> Añadir un nuevo SIGPAC</h3>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/sigpacs">Lista de SIGPACs </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir SIGPAC </li>
+    </ol>
+</nav>
+<hr>
+
+
+<div *ngIf="!mensaje" class="container">
+    <div class="row">
+        <div class="col-5 ">
+
+            <form [formGroup]="sigpacForm">
+                <div class="d-flex flex-row justify-content-start ">
+                    <div class="d-flex justify-content-center p-2 mask mask-custom">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="province" class="col-form-label fw-bold">Provincia</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="province" class="form-control" formControlName="province">
+                            </div>
+                            <div *ngIf="(province?.invalid && province?.touched) || (province?.invalid && invalido)" class="m-3">
+                                <p class="validacion" *ngIf="province?.errors?.['required']">
+                                    Este campo es obligatorio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row justify-content-start ">
+                    <div class="d-flex justify-content-center p-2 mask mask-custom">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="municipality" class="col-form-label fw-bold">Municipio</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="municipality" class="form-control"
+                                    formControlName="municipality">
+                            </div>
+                            <div *ngIf="(municipality?.invalid && municipality?.touched) || (municipality?.invalid && invalido)" class="m-3">
+                                <p class="validacion" *ngIf="municipality?.errors?.['required']">
+                                    Este campo es obligatorio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row justify-content-start ">
+                    <div class="d-flex justify-content-center p-2 mask mask-custom">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="zone" class="col-form-label fw-bold">Zona</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="zone" class="form-control" formControlName="zone">
+                            </div>
+                            <div *ngIf="(zone?.invalid && zone?.touched) || (zone?.invalid && invalido)" class="m-3">
+                                <p class="validacion" *ngIf="zone?.errors?.['required']">
+                                    Este campo es obligatorio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row justify-content-start ">
+                    <div class="d-flex justify-content-center p-2 mask mask-custom">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="polygon" class="col-form-label fw-bold">Polígono</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="polygon" class="form-control" formControlName="polygon">
+                            </div>
+                            <div *ngIf="(polygon?.invalid && polygon?.touched) || (polygon?.invalid && invalido)" class="m-3">
+                                <p class="validacion" *ngIf="polygon?.errors?.['required']">
+                                    Este campo es obligatorio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row justify-content-start ">
+                    <div class="d-flex justify-content-center p-2 mask mask-custom">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="enclosure" class="col-form-label fw-bold">Área <i class="bi bi-info-circle"
+                                        data-bs-toggle="tooltip"
+                                        title="En metros cuadrados.">
+                                    </i></label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="enclosure" class="form-control" formControlName="enclosure">
+                            </div>
+                            <div *ngIf="(enclosure?.invalid && enclosure?.touched) || (enclosure?.invalid && invalido)" class="m-3">
+                                <p class="validacion" *ngIf="enclosure?.errors?.['required']">
+                                    Este campo es obligatorio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-row justify-content-start ">
+                    <div class="d-flex justify-content-center p-2 mask mask-custom">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="SIGPAC_use" class="col-form-label fw-bold">Uso SIGPAC</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="SIGPAC_use" class="form-control" formControlName="SIGPAC_use">
+                            </div>
+                            <div *ngIf="(SIGPAC_use?.invalid && SIGPAC_use?.touched) || (SIGPAC_use?.invalid && invalido)" class="m-3">
+                                <p class="validacion" *ngIf="SIGPAC_use?.errors?.['required']">
+                                    Este campo es obligatorio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="d-flex justify-content-center m-5 shadow-lg p-2">
+                    <a type="button" style="--clr:#1e9bff" class="boton" (click)="addSIGPAC(sigpacForm.value)"> <span> Añadir </span> <i></i></a>
+                </div>
+            </form>
+
+            
+        </div>
+
+        <div class="col-7">
+            <iframe class="h-100 w-100"
+                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1570495.214870311!2d-7.36990067859146!3d39.75372249823178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sgoogle%20map!5e0!3m2!1ses!2ses!4v1660918349118!5m2!1ses!2ses"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+
+
+<p *ngIf="mensaje" class="text-info text-center"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales"> Añadir más.</a></p>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" class="modales" href="principal/sigpacs"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>

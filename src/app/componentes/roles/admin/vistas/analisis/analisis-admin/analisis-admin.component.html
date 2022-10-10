@@ -1,0 +1,60 @@
+<app-admin-header></app-admin-header>
+
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Lista de análisis</h3>
+</div>
+
+<hr>
+<div *ngIf="hayInfo; else noHayInfo">
+
+
+    <div class="d-flex justify-content-center m-4">
+        <span> Mostrando {{size}} de {{num_analisis}} análisis.</span>
+    </div>
+    <table class="table table-propio table-hover shadow rounded p-2">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Laboratorio</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Fecha</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of analisis?.content; index as i">
+                <th scope="row">{{a.id}}</th>
+                <td>{{a.analysis_type}}</td>
+                <td>{{a.laboratory}}</td>
+                <td>{{a.place}}</td>
+                <td>{{a.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div class="d-flex justify-content-center">
+        <div *ngIf="!first">
+            <button type="button" class="btn flecha" (click)="paginaAnterior(page)"><i
+                    class="bi bi-arrow-left-short" style="font-size:24px"></i></button>
+        </div>
+
+        <span class="mt-3"> Página: {{page}} de {{pages}} </span>
+
+        <div *ngIf="!last">
+            <button type="button" class="btn flecha" (click)="paginaSiguiente(page)"><i
+                    class="bi bi-arrow-right-short" style="font-size:24px"></i></button>
+        </div>
+    </div>
+
+    
+</div>
+<ng-template #noHayInfo>
+    <p class="text-info text-center shadow rounded p-4"> No hay información. </p>
+</ng-template>
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button" href="" class="modales"> <span> <i class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>

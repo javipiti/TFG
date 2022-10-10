@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center m-4">
+    <h3 class="m-2">Añadir producto</h3>
+</div>
+
+<hr>
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href=""><i class="bi bi-house-fill"></i></a></li>
+        <li class="breadcrumb-item"><a href="principal/acciones-fitosanitarias/explotacion/{{explotacionID}}">Lista de
+                acciones fitosanitarias (Explotacion {{explotacionID}}) </a></li>
+        <li class="breadcrumb-item"><a
+                href="principal/acciones-fitosanitarias/explotacion/{{explotacionID}}/accion-fitosanitaria/{{id}}/productos-fitosanitarios">Lista
+                de productos (Acción {{id}}) </a></li>
+        <li class="breadcrumb-item active" aria-current="page">Añadir producto (Acción {{id}}) </li>
+    </ol>
+</nav>
+<hr>
+
+<div *ngIf="!mensaje" class="container-fluid">
+    <div class="d-flex flex-column">
+        <hr>
+        <form [formGroup]="productoForm">
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="reference" class="col-form-label fw-bold">Referencia</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="reference" class="form-control" formControlName="reference">
+                        </div>
+                        <div *ngIf="(reference?.invalid && reference?.touched) || (reference?.invalid && invalido)"
+                            class="m-3">
+                            <p class="validacion" *ngIf="reference?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="commercial_name" class="col-form-label fw-bold">Nombre comercial</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="commercial_name" class="form-control"
+                                formControlName="commercial_name">
+                        </div>
+                        <div *ngIf="(commercial_name?.invalid && commercial_name?.touched) || (commercial_name?.invalid && invalido)"
+                            class="m-3">
+                            <p class="validacion" *ngIf="commercial_name?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="active_substance" class="col-form-label fw-bold">Principio activo</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="active_substance" class="form-control"
+                                formControlName="active_substance">
+                        </div>
+                        <div *ngIf="(active_substance?.invalid && active_substance?.touched) || (active_substance?.invalid && invalido)"
+                            class="m-3">
+                            <p class="validacion" *ngIf="active_substance?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex flex-row justify-content-start">
+                <div class="d-flex justify-content-center p-2">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="dose" class="col-form-label fw-bold">Dósis</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="dose" class="form-control" formControlName="dose">
+                        </div>
+                        <div *ngIf="(dose?.invalid && dose?.touched) || (dose?.invalid && invalido)" class="m-3">
+                            <p class="validacion" *ngIf="dose?.errors?.['required']">
+                                Este campo es obligatorio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="d-flex justify-content-center m-5">
+                <a type="button" style="--clr:#1e9bff" class="boton" (click)="addProducto(productoForm.value)"> <span>
+                        Añadir </span> <i></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<p *ngIf="mensaje" class="text-info text-center"> {{mensaje}} <br> <a type="button" (click)="reset()" class="modales">
+        Añadir más.</a></p>
+
+
+<div class="d-flex justify-content-start ms-5 m-5">
+    <a type="button"href="principal/acciones-fitosanitarias/explotacion/{{explotacionID}}/accion-fitosanitaria/{{id}}/productos-fitosanitarios" class="modales"> <span> <i
+                class="bi bi-arrow-left-short" style="font-size:24px"></i> Volver
+        </span></a>
+</div>

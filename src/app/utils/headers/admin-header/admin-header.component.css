@@ -1,0 +1,17 @@
+
+.dropdown-item{
+    background-color: #343A40;
+    color: #4582ec;
+}
+
+.dropdown-item:hover{
+    background-color: #343A40;
+    color: #3768bd;
+}
+#icon{
+    color: #4582ec;
+}
+
+#icon:hover{
+    color: #3768bd;
+}

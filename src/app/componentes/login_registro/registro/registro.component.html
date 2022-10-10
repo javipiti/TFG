@@ -1,0 +1,158 @@
+<div class="container-fluid">
+    <div class="bg-image"
+        style="background-image: url('assets/segunda.jpg'); height: 100vh;background-size: cover; background-repeat: no-repeat;">
+
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <form [formGroup]="registroForm" (ngSubmit)="onRegistro(registroForm.value)">
+                            <div class="row g-0">
+                                <div class="text-center mt-5">
+                                    <h4 class="mt-1 mb-5 pb-1">Registro</h4>
+                                </div>
+                                <div class="col-lg-6" *ngIf="!exitoMensaje">
+                                    <div class="card-body p-md-5 mx-md-4">
+
+                                        <div class="form-group m-3">
+                                            <input type="text" class="form-control" id="nif" placeholder="NIF"
+                                                formControlName="nif">
+                                            <div *ngIf="(nif?.invalid && nif?.touched) || (nif?.invalid && invalido)" class="m-3">
+                                                <p class="validacion" *ngIf="nif?.errors?.['required']">
+                                                    Este campo es obligatorio.
+                                                </p>
+                                                <p class="validacion" *ngIf="nif?.errors?.['pattern']">
+                                                    El NIF es incorrecto.
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group m-3">
+                                            <input type="text" class="form-control" id="name" placeholder="Nombre"
+                                                formControlName="name">
+                                                <div *ngIf="(name?.invalid && name?.touched) || (name?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="name?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="text" class="form-control" id="surname" placeholder="Apellidos"
+                                                formControlName="surname">
+                                                <div *ngIf="(surname?.invalid && surname?.touched) || (surname?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="surname?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                                formControlName="email">
+                                                <div *ngIf="(email?.invalid && email?.touched) || (email?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="email?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                    <p class="validacion" *ngIf="email?.errors?.['pattern']">
+                                                        El Email no es correcto.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="password" class="form-control" id="password"
+                                                placeholder="Contraseña" formControlName="password">
+                                                <div *ngIf="(password?.invalid && password?.touched) || (password?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="password?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                    <p class="validacion" *ngIf="password?.errors?.['pattern']">
+                                                        La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" *ngIf="!exitoMensaje">
+                                    <div class="card-body p-md-5 mx-md-4">
+                                        <div class="form-group m-3">
+                                            <input type="tel" class="form-control" id="phone" placeholder="Teléfono"
+                                                formControlName="phone">
+                                                <div *ngIf="(phone?.invalid && phone?.touched) || (phone?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="phone?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="text" class="form-control" id="address" placeholder="Dirección"
+                                                formControlName="address">
+                                                <div *ngIf="(address?.invalid && address?.touched) || (address?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="address?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="number" class="form-control" id="postal_code"
+                                                placeholder="Código postal" formControlName="postal_code">
+                                                <div *ngIf="(postal_code?.invalid && postal_code?.touched) || (postal_code?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="postal_code?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="text" class="form-control" id="province"
+                                                placeholder="Provincia" formControlName="province">
+                                                <div *ngIf="(province?.invalid && province?.touched) || (province?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="province?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group m-3">
+                                            <input type="text" class="form-control" id="country" placeholder="País"
+                                                formControlName="country">
+                                                <div *ngIf="(country?.invalid && country?.touched) || (country?.invalid && invalido)" class="m-3">
+                                                    <p class="validacion" *ngIf="country?.errors?.['required']">
+                                                        Este campo es obligatorio.
+                                                    </p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-center m-5" *ngIf="!exitoMensaje">
+                                <input type="submit" class="btn btn-primary btn-block fa-lg mb-3" value="Registrarse">
+                            </div>
+
+                            <div class="alert alert-danger" *ngIf="errorMensaje">
+                                <p>{{mensaje}}</p>
+                            </div>
+                            <div class="alert alert-success" *ngIf="exitoMensaje">
+                                <p>{{mensaje}}</p>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-center pb-4">
+                                <p class="mb-0 me-2">¿Ya tienes una cuenta?</p>
+                                <a type="button" class="btn btn-outline-danger" href="">Iniciar sesión</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
