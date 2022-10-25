@@ -10,10 +10,10 @@ import { equipmentIR } from 'src/app/utils/interfaces/respuestas.component';
 })
 export class InfoEquipoAplicacionComponent implements OnInit {
 
-  id:any;
-  explotacionID:any;
+  id: any;
+  explotacionID: any;
 
-  equipo:equipmentIR = {
+  equipo: equipmentIR = {
     id: 0,
     roma: 0,
     equipment_number: 0,
@@ -22,12 +22,14 @@ export class InfoEquipoAplicacionComponent implements OnInit {
     acquisition_date: '',
     inspection_date: ''
   };
-  
+
   constructor(private api: ApiService, private router: ActivatedRoute) { }
 
-  arreglarArray(){
-    this.equipo.acquisition_date = this.equipo.acquisition_date.slice(0,10);
-    this.equipo.inspection_date = this.equipo.inspection_date.slice(0,10);
+  arreglarArray() {
+    if (this.equipo.acquisition_date)
+      this.equipo.acquisition_date = this.equipo.acquisition_date.slice(0, 10);
+    if (this.equipo.inspection_date)
+      this.equipo.inspection_date = this.equipo.inspection_date.slice(0, 10);
   }
 
   ngOnInit(): void {
@@ -36,18 +38,18 @@ export class InfoEquipoAplicacionComponent implements OnInit {
     this.getEquipo();
   }
 
-  reset(){
+  reset() {
     this.getEquipo();
   }
-  getEquipo(){
-    this.api.getEquipment(this.id).subscribe(data =>{
+  getEquipo() {
+    this.api.getEquipment(this.id).subscribe(data => {
       this.equipo = data;
       this.arreglarArray();
     });
   }
-  updateEquipo(){
+  updateEquipo() {
     this.api.updateEquipment(this.equipo).subscribe(data => {
-      this.getEquipo();      
+      this.getEquipo();
     })
   }
 }

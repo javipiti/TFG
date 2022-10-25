@@ -13,8 +13,8 @@ export class InfoAccionFitosanitariaComponent implements OnInit {
   id: any;
   explotacionID: any;
 
-  treated_surface:string;
-  order:string;
+  treated_surface: string;
+  order: string;
 
   accion: accionFitosanitariaIR = {
     advisory_order: false,
@@ -32,7 +32,9 @@ export class InfoAccionFitosanitariaComponent implements OnInit {
   constructor(private api: ApiService, private router: ActivatedRoute) { }
 
   arreglarArray() {
-    this.accion.date = this.accion.date.slice(0, 10);
+    if (this.accion.date)
+      this.accion.date = this.accion.date.slice(0, 10);
+      
     switch (this.accion.treated_surface) {
       case ('P'):
         this.treated_surface = "Parcial";

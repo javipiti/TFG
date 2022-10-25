@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-auto">
                             <select class="form-select" id="liczepa" formControlName="liczepa">
-                                <option value="YES"> Sí</option>
+                                <option value="YES">Sí</option>
                                 <option value="NO">No</option>
                             </select>
                         </div>
@@ -148,10 +148,10 @@
                 <div class="d-flex justify-content-center p-2">
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
-                            <label for="SIGPAC" class="col-form-label fw-bold">SIGPAC ID <i class="bi bi-info-circle"
+                            <label for="SIGPAC" class="col-form-label fw-bold">SIGPAC ID <a target="_blank" href="principal/sigpacs"> <i class="bi bi-info-circle"
                                     data-bs-toggle="tooltip"
                                     title="Identificador del Sistema de Información Geográfica de Parcelas Agrícolas. &#013; Puede consultarlo en la sección Explotaciones/SIGPACs.">
-                                </i></label>
+                                </i></a></label>
                         </div>
                         <div class="col-auto">
                             <input type="text" id="SIGPAC" class="form-control" formControlName="id">
@@ -283,8 +283,8 @@
                         <div class="col-auto">
                             <select class="form-select" id="vulnerable_nitrate_zone"
                                 formControlName="vulnerable_nitrate_zone">
-                                <option value="YES"> Sí</option>
-                                <option value="NO'">No</option>
+                                <option value="YES">Si</option>
+                                <option value="NO">No</option>
                             </select>
                         </div>
                         <div *ngIf="(vulnerable_nitrate_zone?.invalid && vulnerable_nitrate_zone?.touched) || (vulnerable_nitrate_zone?.invalid && invalido)" class="m-3">

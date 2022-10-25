@@ -63,7 +63,9 @@ export class ArchivosUsuarioComponent implements OnInit {
 
   arreglarArray() {
     for (var i = 0; i < this.archivos.content.length; i++) {
-      this.archivos.content[i].upload_date = this.archivos.content[i].upload_date.slice(0, 10);
+      if (this.archivos.content[i].upload_date) {
+        this.archivos.content[i].upload_date = this.archivos.content[i].upload_date.slice(0, 10);
+      }
 
       switch (this.archivos.content[i].status) {
         case ('VERIFIED'):
@@ -130,7 +132,7 @@ export class ArchivosUsuarioComponent implements OnInit {
   cargarArchivos() {
     this.api.getAllFilesUser(this.user.id, 0).subscribe(data => {
       if (data) {
-        this.archivos = data;        
+        this.archivos = data;
         this.arreglarArray();
         this.pagesFiles = this.archivos.totalPages;
         this.num_files = data.totalElements;

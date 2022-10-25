@@ -33,9 +33,12 @@ export class AsesoresAdminComponent implements OnInit {
 
   arreglarArray() {
     for (var i = 0; i < this.asesores.content.length; i++) {
-      this.asesores.content[i].discharge_date = this.asesores.content[i].discharge_date.slice(0, 10);
-      this.asesores.content[i].creation_date = this.asesores.content[i].creation_date.slice(0, 10);
-      this.asesores.content[i].admission_date = this.asesores.content[i].admission_date.slice(0, 10);
+      if (this.asesores.content[i].discharge_date)
+        this.asesores.content[i].discharge_date = this.asesores.content[i].discharge_date.slice(0, 10);
+      if (this.asesores.content[i].creation_date)
+        this.asesores.content[i].creation_date = this.asesores.content[i].creation_date.slice(0, 10);
+      if (this.asesores.content[i].admission_date)
+        this.asesores.content[i].admission_date = this.asesores.content[i].admission_date.slice(0, 10);
 
       switch (this.asesores.content[i].license_type) {
         case ('basic'):

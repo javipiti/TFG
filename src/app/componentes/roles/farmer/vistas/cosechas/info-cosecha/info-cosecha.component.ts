@@ -10,11 +10,11 @@ import { allHarvestI, harvestIR } from 'src/app/utils/interfaces/respuestas.comp
 })
 export class InfoCosechaComponent implements OnInit {
 
-  
-  id:any;
-  explotacionID:any;
 
-  cosecha:harvestIR = {
+  id: any;
+  explotacionID: any;
+
+  cosecha: harvestIR = {
     id: 0,
     date: '',
     vegetable_product: '',
@@ -22,7 +22,7 @@ export class InfoCosechaComponent implements OnInit {
     destination: '',
     NIF_client: ''
   };
-  
+
   constructor(private api: ApiService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -31,19 +31,20 @@ export class InfoCosechaComponent implements OnInit {
     this.getCosecha();
   }
 
-  getCosecha(){
-    this.api.getHarvest(this.id).subscribe(data =>{
+  getCosecha() {
+    this.api.getHarvest(this.id).subscribe(data => {
       this.cosecha = data;
-      let fecha = this.cosecha.date.split("T",1);
-      this.cosecha.date = fecha[0];
+      let fecha = this.cosecha.date.split("T", 1);
+      if (fecha[0])
+        this.cosecha.date = fecha[0];
     });
   }
 
-  reset(){
+  reset() {
     this.getCosecha();
   }
 
-  updateCosecha(){
+  updateCosecha() {
     this.api.updateHarvest(this.cosecha).subscribe(data => {
       this.getCosecha();
     })

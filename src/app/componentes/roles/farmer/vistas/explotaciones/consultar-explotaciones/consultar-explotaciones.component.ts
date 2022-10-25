@@ -13,6 +13,8 @@ export class ConsultarExplotacionesComponent implements OnInit {
 
   farms: getFarmsI;
   contentFarm: contentFarmI[];
+  hay:boolean;
+  hayInfo:boolean;
 
   farmID: number;
 
@@ -60,26 +62,39 @@ export class ConsultarExplotacionesComponent implements OnInit {
   }
   loadFarms() {
     this.api.getAllFarmsUser(0).subscribe(data => {
-      this.farms = data;
-      this.arreglarArray();
-      this.pages = this.farms.totalPages;
-      this.num_explotaciones = data.totalElements;
-      this.first = data.first;
-      this.last = data.last;
-      if (data.totalElements < 10) {
-        this.size = data.totalElements;
+      if (data) {
+        this.hay = true;
+        this.farms = data;
+        this.arreglarArray();
+        this.pages = this.farms.totalPages;
+        this.num_explotaciones = data.totalElements;
+        this.first = data.first;
+        this.last = data.last;
+        if (data.totalElements < 10) {
+          this.size = data.totalElements;
+        }
+      }else{
+        this.hay = false;
       }
     });
   }
 
-  descargarFarmBook(farmID:number){
-    this.api.getFarmBookUser(farmID).subscribe(data =>{
-      var downloadURL = window.URL.createObjectURL(data);
-      var link = document.createElement('a');
-      link.href = downloadURL;
-      link.download = "Cuaderno de explotacion";
-      link.click();
-    });
+
+  descargarFarmBook(farmID: number) {
+    this.api.getPlotIdentification(farmID).subscribe(data =>{
+      if(data){
+        this.api.getFarmBookUser(farmID).subscribe(data => {
+          var downloadURL = window.URL.createObjectURL(data);
+          var link = document.createElement('a');
+          link.href = downloadURL;
+          link.download = "Cuaderno de explotacion";
+          link.click();
+        });
+      }else{
+        alert("Debe añadir primero la información de la explotación.");
+      }
+    })
+    
   }
 
   guardarID(farmID: number) {

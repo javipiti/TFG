@@ -39,14 +39,15 @@ export class ConsultarAnalisisComponent implements OnInit {
     }
   }
 
-  arreglarArray(){
-    for(var i=0; i< this.analisis.content.length;i++){
-      this.analisis.content[i].date = this.analisis.content[i].date.slice(0,10);
+  arreglarArray() {
+    for (var i = 0; i < this.analisis.content.length; i++) {
+      if (this.analisis.content[i].date)
+        this.analisis.content[i].date = this.analisis.content[i].date.slice(0, 10);
     }
   }
 
   cargarAnalisis() {
-    
+
     this.api.getAllAnalysisUser(this.farmID, 0).subscribe(data => {
       if (data) {
         this.analisis = data;

@@ -10,10 +10,10 @@ import { allFarmsAdminI, plotIdentificationRI, userRI } from 'src/app/utils/inte
 })
 export class ExplotacionesAdminComponent implements OnInit {
 
-  
+
   explotaciones: allFarmsAdminI;
 
-  user: userRI  = {
+  user: userRI = {
     id: 0, keepLogged: false, role: { id: 0, role_type: '', name: '' },
     nif: '', name: '', surname: '', email: '', password: '', NIF: '', phone: 0, address: '', postal_code: 0, province: '', state: '', country: '', creation_date: '',
     validation_status: ''
@@ -65,14 +65,16 @@ export class ExplotacionesAdminComponent implements OnInit {
 
   getUser() {
     this.api.getUser().subscribe(data => {
-      this.user = data;      
+      this.user = data;
     });
   }
 
   arreglarArray() {
 
-    this.plotID.dischargeDate = this.plotID.dischargeDate.slice(0, 10);
-    this.plotID.entryDate = this.plotID.entryDate.slice(0, 10);
+    if (this.plotID.dischargeDate)
+      this.plotID.dischargeDate = this.plotID.dischargeDate.slice(0, 10);
+    if (this.plotID.entryDate)
+      this.plotID.entryDate = this.plotID.entryDate.slice(0, 10);
 
     switch (this.plotID.liczepa) {
       case ('YES'):
@@ -151,7 +153,7 @@ export class ExplotacionesAdminComponent implements OnInit {
   }
 
   arreglarArray2() {
-    for(var i=0;i<this.explotaciones.content.length;i++){
+    for (var i = 0; i < this.explotaciones.content.length; i++) {
 
       switch (this.explotaciones.content[i].farm.farm_type) {
         case ('ecological_agriculture'):
@@ -174,7 +176,7 @@ export class ExplotacionesAdminComponent implements OnInit {
           break;
       }
     }
-    
+
   }
 
   getAllExplotaciones() {
@@ -260,7 +262,7 @@ export class ExplotacionesAdminComponent implements OnInit {
     }
   }
 
-  descargarArchivo(farmID:number){
+  descargarArchivo(farmID: number) {
     this.api.getFarmBook(farmID).subscribe(data => {
       var downloadURL = window.URL.createObjectURL(data);
       var link = document.createElement('a');

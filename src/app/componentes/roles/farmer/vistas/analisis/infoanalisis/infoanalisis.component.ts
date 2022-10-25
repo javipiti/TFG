@@ -37,7 +37,8 @@ export class InfoanalisisComponent implements OnInit {
   }
 
   arreglarArray() {
-    this.analisis.date = this.analisis.date.slice(0, 10);
+    if (this.analisis.date)
+      this.analisis.date = this.analisis.date.slice(0, 10);
 
     switch (this.analisis.analysis_type) {
       case ('WATER'):

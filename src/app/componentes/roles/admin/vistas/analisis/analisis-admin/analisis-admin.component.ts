@@ -33,7 +33,8 @@ export class AnalisisAdminComponent implements OnInit {
 
   arreglarArray() {
     for (var i = 0; i < this.analisis.content.length; i++) {
-      this.analisis.content[i].date = this.analisis.content[i].date.slice(0, 10);
+      if (this.analisis.content[i].date)
+        this.analisis.content[i].date = this.analisis.content[i].date.slice(0, 10);
 
       switch (this.analisis.content[i].analysis_type) {
         case ('WATER'):

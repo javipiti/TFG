@@ -10,13 +10,13 @@ import { allHarvestI } from 'src/app/utils/interfaces/respuestas.component';
 })
 export class ConsultarCosechasComponent implements OnInit {
 
-  id:any;
+  id: any;
 
-  cosechas:allHarvestI;
-  hay:boolean = false;
-  error:string;
-  farmID:number = 0;
-  harvestID:number;
+  cosechas: allHarvestI;
+  hay: boolean = false;
+  error: string;
+  farmID: number = 0;
+  harvestID: number;
 
   pages: number = 0;
   page: number = 1;
@@ -29,53 +29,54 @@ export class ConsultarCosechasComponent implements OnInit {
   page_number: number = 1;
 
   mensaje: string;
-  
+
   constructor(private api: ApiService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.router.snapshot.paramMap.get('explotacionID');    
-    if(this.id){
+    this.id = this.router.snapshot.paramMap.get('explotacionID');
+    if (this.id) {
       this.farmID = this.id;
       this.cargarCosechas();
     }
   }
 
-  arreglarArray(){
-    for(var i=0; i< this.cosechas.content.length ;i++){
-      this.cosechas.content[i].date =  this.cosechas.content[i].date.slice(0,10);
+  arreglarArray() {
+    for (var i = 0; i < this.cosechas.content.length; i++) {
+      if (this.cosechas.content[i].date)
+        this.cosechas.content[i].date = this.cosechas.content[i].date.slice(0, 10);
     }
   }
 
-  cargarCosechas(){
+  cargarCosechas() {
     this.api.getAllHarvestUser(this.farmID, 0).subscribe(data => {
-      if(data){
-      this.cosechas = data;
-      this.arreglarArray();
-      this.pages = this.cosechas.totalPages;
-      this.num_explotaciones = data.totalElements;
-      this.first = data.first;
-      this.last = data.last;
-      if (data.totalElements < 10) {
-        this.size = data.totalElements;
+      if (data) {
+        this.cosechas = data;
+        this.arreglarArray();
+        this.pages = this.cosechas.totalPages;
+        this.num_explotaciones = data.totalElements;
+        this.first = data.first;
+        this.last = data.last;
+        if (data.totalElements < 10) {
+          this.size = data.totalElements;
+        }
+
+        this.hay = true;
+        this.error = "";
+      } else {
+        this.error = "No hay cosechas en esa explotación.";
+        this.hay = false;
       }
-      
-      this.hay= true;
-      this.error= "";
-    }else{
-      this.error = "No hay cosechas en esa explotación.";
-      this.hay = false;
-    }
     }, err => {
       this.error = "No dispones de ninguna explotación con ese ID.";
       this.hay = false;
     })
   }
 
-  guardarID(harvestID:number){
+  guardarID(harvestID: number) {
     this.harvestID = harvestID;
   }
 
-  deleteCosecha(){
+  deleteCosecha() {
     this.api.deleteHarvest(this.harvestID).subscribe(data => {
       this.cargarCosechas();
     })

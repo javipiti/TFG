@@ -29,8 +29,18 @@ export class ApiService {
     return this.http.get<allUsersI>(url);
   }
 
+  getUserPersonalizado(NIF:string): Observable<allUsersI> {
+    let url = '/admin/users?search=NIF:' + NIF; 
+    return this.http.get<allUsersI>(url);
+  }
+
   getAllFiles(page:number): Observable<allFilesI> {
     let url = '/admin/files?search=sortBy:id,type:ID_CARD,size:10,page:' + page; 
+    return this.http.get<allFilesI>(url);
+  }
+
+  getAllFilesPersonalizado(page:number): Observable<allFilesI> {
+    let url = '/admin/files?search=URL:user/' + page; 
     return this.http.get<allFilesI>(url);
   }
 

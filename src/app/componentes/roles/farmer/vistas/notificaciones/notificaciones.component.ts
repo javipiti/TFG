@@ -22,7 +22,7 @@ export class NotificacionesComponent implements OnInit {
   };
 
   haySolicitudes: boolean = true;
-  hay:boolean = false;
+  hay: boolean = false;
 
   constructor(private api: ApiService, private router: Router) { }
 
@@ -43,17 +43,17 @@ export class NotificacionesComponent implements OnInit {
 
   getNotificaciones() {
     this.api.getNotificaciones().subscribe(data => {
-      if(data){
+      if (data) {
         this.notificaciones = data;
         this.hay = true;
-      }else{
+      } else {
         this.hay = false;
       }
     });
   }
 
   getPeticionesRepresentacion() {
-    this.api.getPeticionesRepresentacion().subscribe(data => {      
+    this.api.getPeticionesRepresentacion().subscribe(data => {
       this.haySolicitudes = true;
       this.solicitudes = data;
       this.dividirFecha();
@@ -65,7 +65,8 @@ export class NotificacionesComponent implements OnInit {
 
   dividirFecha() {
     for (var i = 0; i < this.solicitudes.length; i++) {
-      this.solicitudes[i].requestDate = this.solicitudes[i].requestDate.slice(0, 10);
+      if (this.solicitudes[i].requestDate)
+        this.solicitudes[i].requestDate = this.solicitudes[i].requestDate.slice(0, 10);
       if (this.solicitudes[i].responseDate != null) {
         this.solicitudes[i].responseDate = this.solicitudes[i].responseDate.slice(0, 10);
       }

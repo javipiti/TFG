@@ -33,7 +33,8 @@ export class ArchivosAdminComponent implements OnInit {
 
   arreglarArray() {
     for (var i = 0; i < this.allFiles.content.length; i++) {
-      this.allFiles.content[i].upload_date = this.allFiles.content[i].upload_date.slice(0, 10);
+      if (this.allFiles.content[i].upload_date)
+        this.allFiles.content[i].upload_date = this.allFiles.content[i].upload_date.slice(0, 10);
 
       switch (this.allFiles.content[i].status) {
         case ('VERIFIED'):

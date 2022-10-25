@@ -34,7 +34,8 @@ export class AccionesFitosanitariasAdminComponent implements OnInit {
 
   arreglarArray() {
     for (var i = 0; i < this.acciones.content.length; i++) {
-      this.acciones.content[i].date = this.acciones.content[i].date.slice(0, 10);
+      if (this.acciones.content[i].date)
+        this.acciones.content[i].date = this.acciones.content[i].date.slice(0, 10);
 
       switch (this.acciones.content[i].advisory_order) {
         case (true):

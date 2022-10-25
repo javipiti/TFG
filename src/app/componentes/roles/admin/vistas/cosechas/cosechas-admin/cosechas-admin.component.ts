@@ -34,7 +34,8 @@ export class CosechasAdminComponent implements OnInit {
   arreglarArray() {
 
     for (var i = 0; i < this.cosechas.content.length; i++) {
-      this.cosechas.content[i].date = this.cosechas.content[i].date.slice(0, 10);
+      if (this.cosechas.content[i].date)
+        this.cosechas.content[i].date = this.cosechas.content[i].date.slice(0, 10);
     }
 
 

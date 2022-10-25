@@ -14,7 +14,7 @@ export class UsuariosComponent implements OnInit {
   allFiles: allFilesI;
   allUsers: allUsersI;
   mySearch: string = '';
-
+  busqueda: boolean;
   pages: number = 0;
   page: number = 1;
   size: number = 10;
@@ -88,7 +88,8 @@ export class UsuariosComponent implements OnInit {
 
   arreglarArray() {
     for (var i = 0; i < this.allUsers.content.length; i++) {
-      this.allUsers.content[i].creation_date = this.allUsers.content[i].creation_date.slice(0, 10);
+      if (this.allUsers.content[i].creation_date)
+        this.allUsers.content[i].creation_date = this.allUsers.content[i].creation_date.slice(0, 10);
 
       switch (this.allUsers.content[i].validation_status) {
         case ('NOT_VALIDATED'):
@@ -128,7 +129,8 @@ export class UsuariosComponent implements OnInit {
 
   arreglarArrayArchivos() {
     for (var i = 0; i < this.allFiles.content.length; i++) {
-      this.allFiles.content[i].upload_date = this.allFiles.content[i].upload_date.slice(0, 10);
+      if (this.allFiles.content[i].upload_date)
+        this.allFiles.content[i].upload_date = this.allFiles.content[i].upload_date.slice(0, 10);
 
       switch (this.allFiles.content[i].status) {
         case ('VERIFIED'):

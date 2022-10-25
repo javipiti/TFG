@@ -97,10 +97,12 @@ export class InfoExplotacionComponent implements OnInit {
   }
   arreglarArray2() {
 
-    this.farmInfo.dischargeDate = this.farmInfo.dischargeDate.slice(0, 10);
-    this.farmInfo.entryDate = this.farmInfo.entryDate.slice(0, 10);
+    if (this.farmInfo.dischargeDate)
+      this.farmInfo.dischargeDate = this.farmInfo.dischargeDate.slice(0, 10);
+    if (this.farmInfo.entryDate)
+      this.farmInfo.entryDate = this.farmInfo.entryDate.slice(0, 10);
 
-    switch (this.liz) {
+    switch (this.farmInfo['LIC/ZEPA']) {
       case ('YES'):
         this.liz = "Sí";
         break;
@@ -176,11 +178,11 @@ export class InfoExplotacionComponent implements OnInit {
     }
   }
 
-  resetFarm(){
+  resetFarm() {
     this.getFarm();
   }
 
-  resetFarmInfo(){
+  resetFarmInfo() {
     this.getFarmInfo();
   }
 
@@ -200,7 +202,6 @@ export class InfoExplotacionComponent implements OnInit {
         this.farmInfo = data;
         this.SIGPAC = data.SIGPAC
         this.open = data['open/protected'];
-        this.liz = data['LIC/ZEPA'];
         this.tipo = data.type;
         this.sistema = data.integrated_system_advice;
         this.water = data['well/water intake distance'];

@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center m-4">
-    <h3 class="m-2">Subir archivo CSV</h3>
+    <h3 class="m-2 text-primary">Subir archivo CSV</h3>
 </div>
 
 <hr>
@@ -12,7 +12,10 @@
 </nav>
 <hr>
 
+
 <div *ngIf="!mensaje" class="container-fluid">
+    <p class="text-info shadow rounded p-4 text-center"> En esta página podrá subir varias cosechas, análisis o acciones fitosanitarias a la vez a través de un archivo CSV. Los campos deben estar separados por ';'.</p>
+
     <div class="d-flex flex-column">
         <hr>
         <div class="d-flex flex-row justify-content-start">
@@ -74,6 +77,31 @@
                 <span> Subir archivo </span> <i></i></a>
         </div>
     </div>
+<hr>
+    <h5 class="text-primary"> Ejemplos</h5>
+    <hr>
+    <p class="text-info text-center"> Acción fitosanitaria</p>
+    <hr>
+    <img src="assets/csv accion.PNG" class="d-block" alt="accion">
+    <div class="m-5 text-center">
+        <a href="https://drive.google.com/uc?id=1rR08XrbImQU0ili5v_gmB8Hh1SwV7nk3&export=download&authuser=0" style="--clr:#1e9bff" class="boton m-5 text-center"> <span>Descargar plantilla </span> <i></i></a>
+    </div>
+   
+    <hr>
+    <p class="text-info text-center"> Cosecha</p>
+    <hr>
+    <img src="assets/csv cosecha.PNG" class="d-block" alt="accion">
+    <div class="m-5 text-center">
+        <a href="https://drive.google.com/uc?id=1TOlsAMOSWQVwRvA99R2uzCy0Yo417L2D&export=download&authuser=0"  style="--clr:#1e9bff" class="boton m-5 text-center"> <span>Descargar plantilla </span> <i></i></a>
+    </div>
+    <hr>
+    <p class="text-info text-center"> Análisis</p>
+    <hr>
+    <img src="assets/csv analisis.PNG" class="d-block" alt="accion">
+    <div class="m-5 text-center">
+        <a href="https://drive.google.com/uc?id=1CD6UfFvYhH_UZNALA3PCgAftGZtB19Q2&export=download&authuser=0" style="--clr:#1e9bff" class="boton m-5 text-center"> <span>Descargar plantilla </span> <i></i></a>
+    </div>
+   
 </div>
 
 <p class="text-info text-center shadow rounded p-4" *ngIf="mensaje">{{mensaje}} <br> <a type="button" (click)="reset()"

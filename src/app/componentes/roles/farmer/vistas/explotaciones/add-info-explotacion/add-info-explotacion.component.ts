@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { LoginComponent } from 'src/app/componentes/login_registro/login/login.component';
 import { ApiService } from 'src/app/servicios/api.service';
+import { plotIdentificationI } from 'src/app/utils/interfaces/peticiones.component';
 
 @Component({
   selector: 'app-add-info-explotacion',
@@ -47,6 +48,7 @@ export class AddInfoExplotacionComponent implements OnInit {
 
   addInfo(form: any) {
     if (this.infoForm.valid) {
+      form['LIC/ZEPA'] = form.liczepa;
       this.api.savePlotIdentification(form, this.id).subscribe(data => {
         window.location.replace('principal/consultar-explotaciones/' + this.id);
       }, err => {
@@ -54,7 +56,7 @@ export class AddInfoExplotacionComponent implements OnInit {
       });
     } else {
       this.invalido = true;
-    }
+    }    
   }
 
   get liczepa() { return this.infoForm.get('liczepa') };
