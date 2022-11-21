@@ -301,12 +301,12 @@ export class UsuariosComponent implements OnInit {
   }
 
 
-  descargarArchivo(fileID: number) {
+  descargarArchivo(fileID: number, name:string) {
     this.api.getFile(fileID).subscribe(data => {
       var downloadURL = window.URL.createObjectURL(data);
       var link = document.createElement('a');
       link.href = downloadURL;
-      link.download = "Archivo";
+      link.download = name;
       link.click();
 
     })

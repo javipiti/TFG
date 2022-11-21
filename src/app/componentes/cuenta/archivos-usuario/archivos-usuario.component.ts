@@ -81,11 +81,7 @@ export class ArchivosUsuarioComponent implements OnInit {
           this.archivos.content[i].status = "Esperando verificación";
           break;
         case ('ABOUT_TO_EXPIRE'):
-          this.archivos.content[i].status = "Apunto de expirar";
-          break;
-        case (''):
-          break;
-        case (''):
+          this.archivos.content[i].status = "A punto de expirar";
           break;
         default:
           this.archivos.content[i].status = "";
@@ -145,7 +141,8 @@ export class ArchivosUsuarioComponent implements OnInit {
     });
   }
 
-  descargarFichero(ficheroID: number, tipoArchivo: string, url: string) {
+  descargarFichero(ficheroID: number, tipoArchivo: string, url: string, name:string) {
+    
     if (tipoArchivo === 'harvestFile') {
       var array = url.split('/', 4);
       var harvestID = parseInt(array[3]);
@@ -154,7 +151,7 @@ export class ArchivosUsuarioComponent implements OnInit {
         var downloadURL = window.URL.createObjectURL(data);
         var link = document.createElement('a');
         link.href = downloadURL;
-        link.download = "Cosecha";
+        link.download = name;
         link.click();
 
       })
@@ -167,23 +164,22 @@ export class ArchivosUsuarioComponent implements OnInit {
         var downloadURL = window.URL.createObjectURL(data);
         var link = document.createElement('a');
         link.href = downloadURL;
-        link.download = "Accion";
+        link.download = name;
         link.click();
 
       })
     } else if (tipoArchivo === 'userFile') {
-      var array = url.split('/', 2);
-      var userID = parseInt(array[1]);
 
-      this.api.getFileUser(userID, ficheroID).subscribe(data => {
+      this.api.getFileUser(this.user.id, ficheroID).subscribe(data => {
         var downloadURL = window.URL.createObjectURL(data);
         var link = document.createElement('a');
         link.href = downloadURL;
-        link.download = "Usuario";
+        link.download = name;
         link.click();
 
       })
     } else if (tipoArchivo === 'analysisFile') {
+      
       var array = url.split('/', 4);
       var analisisID = parseInt(array[3]);
 
@@ -191,7 +187,21 @@ export class ArchivosUsuarioComponent implements OnInit {
         var downloadURL = window.URL.createObjectURL(data);
         var link = document.createElement('a');
         link.href = downloadURL;
-        link.download = "Analisis";
+        link.download = name;
+        link.click();
+
+      })
+    }else if (tipoArchivo === 'CSV') {
+      console.log("entro aqui");
+      
+      var array = url.split('/', 2);
+      var analisisID = parseInt(array[1]);
+
+      this.api.downloadAnalysis(analisisID, ficheroID).subscribe(data => {
+        var downloadURL = window.URL.createObjectURL(data);
+        var link = document.createElement('a');
+        link.href = downloadURL;
+        link.download = name;
         link.click();
 
       })

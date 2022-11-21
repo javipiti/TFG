@@ -39,7 +39,7 @@
             <td>{{a.expiration_status}}</td>    
             <td>{{a.fileSize}}</td>
             <td class="celda">
-                <a style="--i:#a955ff;--j:#ea51ff;" class="iconos" (click)="descargarFichero(a.id, a.name, a.url)">
+                <a style="--i:#a955ff;--j:#ea51ff;" class="iconos" (click)="descargarFichero(a.id, a.name, a.url, a.original_name)">
                     <span class="icon"><i class="bi bi-download descargar"></i></span>
                     <span class="title">Descargar</span>
                 </a>
